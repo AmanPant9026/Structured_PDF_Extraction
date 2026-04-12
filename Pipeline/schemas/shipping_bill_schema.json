@@ -1,0 +1,149 @@
+{
+  "document_type": "shipping_bill",
+  "version": "1.0",
+  "description": "Indian Customs Shipping Bill for export of goods",
+  "fields": {
+    "shipping_bill_no": {
+      "type": "string",
+      "required": true,
+      "description": "Unique shipping bill number assigned by customs",
+      "aliases": ["SB NO", "S/B NO"]
+    },
+    "shipping_bill_date": {
+      "type": "string",
+      "required": true,
+      "description": "Date of shipping bill in YYYY-MM-DD format"
+    },
+    "exporter_name": {
+      "type": "string",
+      "required": true,
+      "description": "Name of the exporting company or individual"
+    },
+    "exporter_address": {
+      "type": "string",
+      "required": false,
+      "description": "Full address of the exporter"
+    },
+    "exporter_iec": {
+      "type": "string",
+      "required": false,
+      "description": "Importer-Exporter Code of the exporter",
+      "aliases": ["IEC", "IEC CODE"]
+    },
+    "consignee_name": {
+      "type": "string",
+      "required": true,
+      "description": "Name of the consignee / importer"
+    },
+    "consignee_address": {
+      "type": "string",
+      "required": false,
+      "description": "Full address of the consignee"
+    },
+    "consignee_country": {
+      "type": "string",
+      "required": false,
+      "description": "Country of the consignee"
+    },
+    "port_of_loading": {
+      "type": "string",
+      "required": true,
+      "description": "Port from which the goods are loaded / exported",
+      "aliases": ["POL", "LOADING PORT", "PORT OF SHIPMENT"]
+    },
+    "port_of_discharge": {
+      "type": "string",
+      "required": true,
+      "description": "Destination port where goods will be discharged",
+      "aliases": ["POD", "PORT OF DESTINATION", "DESTINATION PORT"]
+    },
+    "vessel_name": {
+      "type": "string",
+      "required": false,
+      "description": "Name of the vessel or flight number"
+    },
+    "voyage_no": {
+      "type": "string",
+      "required": false,
+      "description": "Voyage or flight number",
+      "aliases": ["FLIGHT NO", "VOYAGE NUMBER"]
+    },
+    "bill_of_lading_no": {
+      "type": "string",
+      "required": false,
+      "description": "Bill of lading or airway bill number",
+      "aliases": ["B/L NO", "AWB NO", "BL NUMBER"]
+    },
+    "invoice_no": {
+      "type": "string",
+      "required": false,
+      "description": "Commercial invoice number",
+      "aliases": ["INVOICE NUMBER", "INV NO"]
+    },
+    "invoice_date": {
+      "type": "string",
+      "required": false,
+      "description": "Date of commercial invoice"
+    },
+    "currency": {
+      "type": "string",
+      "required": false,
+      "description": "Invoice currency code (e.g. USD, EUR, INR)"
+    },
+    "total_fob_value": {
+      "type": "number",
+      "required": false,
+      "description": "Total FOB value of all goods in invoice currency",
+      "aliases": ["FOB VALUE", "TOTAL VALUE", "TOTAL FOB"]
+    },
+    "items": {
+      "type": "list",
+      "list_root": true,
+      "required": false,
+      "description": "List of line items / goods descriptions",
+      "items": {
+        "sr_no": {
+          "type": "string",
+          "required": false,
+          "description": "Serial number of the item line",
+          "aliases": ["SL NO", "S. NO", "SR. NO"]
+        },
+        "description": {
+          "type": "string",
+          "required": true,
+          "description": "Description of the goods",
+          "aliases": ["GOODS DESCRIPTION", "COMMODITY", "ITEM DESCRIPTION"]
+        },
+        "hs_code": {
+          "type": "string",
+          "required": true,
+          "description": "HS / ITC-HS tariff classification code",
+          "aliases": ["H.S. CODE", "TARIFF CODE", "HS NO", "ITC HS CODE"]
+        },
+        "quantity": {
+          "type": "number",
+          "required": true,
+          "description": "Quantity of goods",
+          "aliases": ["QTY", "NOS", "PCS", "PIECES"]
+        },
+        "unit": {
+          "type": "string",
+          "required": false,
+          "description": "Unit of measurement (PCS, KGS, MTR, etc.)"
+        },
+        "unit_price": {
+          "type": "number",
+          "required": false,
+          "description": "Price per unit in invoice currency",
+          "aliases": ["UNIT VALUE", "PRICE PER UNIT", "RATE"]
+        },
+        "total_value": {
+          "type": "number",
+          "required": false,
+          "description": "Total value for this line (quantity × unit_price)",
+          "aliases": ["LINE TOTAL", "AMOUNT", "VALUE"]
+        }
+      }
+    }
+  }
+}

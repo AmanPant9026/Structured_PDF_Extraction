@@ -1,0 +1,23 @@
+2026-03-18 10:16:50 | pdf_extractor.pipeline         | INFO     | pipeline_start | doc_type="purchase_order"
+2026-03-18 10:16:50 | pdf_extractor.pipeline         | INFO     | step_preprocess
+2026-03-18 10:16:50 | pdf_extractor.pipeline         | INFO     | step_evidence
+2026-03-18 10:16:50 | pdf_extractor.pipeline         | INFO     | evidence_built | n_blocks=55
+2026-03-18 10:16:50 | pdf_extractor.pipeline         | INFO     | step_schema
+2026-03-18 10:16:50 | pdf_extractor.pipeline         | INFO     | step_extract
+2026-03-18 10:16:50 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Header.Supplier"
+2026-03-18 10:16:50 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Header.Buyer"
+2026-03-18 10:16:50 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Header.BuyerAddress"
+2026-03-18 10:16:50 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Header.BuyerName"
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Header.Dept"
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Header.FtyNo"
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Header.PMNo"
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Header.Date"
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Footer.ShipmentTime"
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Footer.PaymentTerms"
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Footer.MarkingOfGoods"
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Footer.Certificate"
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Footer.SupplierNote"
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | DEBUG    | extract_list | field="RowWiseTable"
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | INFO     | step_repair
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | INFO     | step_validate
+2026-03-18 10:16:51 | pdf_extractor.pipeline         | INFO     | pipeline_done | doc_type="purchase_order" | elapsed=0.47 | valid=true

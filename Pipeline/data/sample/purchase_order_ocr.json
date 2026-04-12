@@ -1,0 +1,28 @@
+[
+  [
+    {
+      "index": 0,
+      "label": "text",
+      "bbox_2d": [377, 68, 618, 84],
+      "polygon": [[377,68],[377,84],[618,84],[618,68]],
+      "content": "## PLACEMENT MEMORANDUM",
+      "native_label": "paragraph_title"
+    },
+    {
+      "index": 1,
+      "label": "text",
+      "bbox_2d": [66, 89, 901, 141],
+      "polygon": [[66,89],[66,141],[900,141],[900,89]],
+      "content": "This Placement Memorandum is issued by LI & FUNG (TRADING) LIMITED as Buying Agent for and on behalf of the Buyer specified below. It records details of the Order, including the type, quantity and unit price of the Goods.",
+      "native_label": "text"
+    },
+    {
+      "index": 2,
+      "label": "table",
+      "bbox_2d": [56, 140, 937, 955],
+      "polygon": [[66,140],[56,955],[937,955],[937,140]],
+      "content": "<table class=\"table table-bordered\"><thead><tr><th colspan=\"2\">Supplier</th><th colspan=\"5\">Buyer</th><th>Dept.</th><th>Fty. No.</th></tr><tr><td colspan=\"2\">ATWAL REDDY AND CHANDER</td><td colspan=\"5\">COMAR GROUP<br>Strada Provinciale 336 Sannitica ex SS 87<br>Ruviano, Campania Italy</td><td colspan=\"2\">P/M No.<br>71-TARNPXK-0903-2</td></tr><tr><td colspan=\"2\"></td><td colspan=\"5\">Buyer: Juan Daniels</td><td colspan=\"2\">Date<br>12-MAR-2012</td></tr><tr><th colspan=\"2\">Article No.</th><th colspan=\"4\">DESCRIPTION</th><th>Quantity</th><th colspan=\"2\">Unit Price</th></tr></thead><tbody><tr><td></td><td></td><td colspan=\"5\">TOTAL QUANTITY:</td><td></td><td></td></tr><tr><td></td><td></td><td>SHIP NO.</td><td>SHIP REF.</td><td>SHIP MODE</td><td>CUST ORDER NO.</td><td>RE-SCH/SCH DLY</td><td>RE-SCH/SCH DATE</td><td>PORT OF DISCHARGE</td><td>FORWARDER</td></tr><tr><td>1</td><td>37440394640</td><td></td><td>AIR</td><td>6FJ4722398983</td><td>12-MAR-2025</td><td>08-APR-2025</td><td>Ille-de-France</td><td>Frank Lopez</td><td></td></tr><tr><td>2</td><td>37440394640</td><td></td><td>AIR</td><td>6FJ4722398983</td><td>07-DEC-2025</td><td>14-FEB-2026</td><td>Ille-de-France</td><td>Frank Lopez</td><td></td></tr><tr><td>3</td><td>37440394640</td><td></td><td>AIR</td><td>6FJ4722398983</td><td>03-FEB-2024</td><td>25-APR-2024</td><td>Ille-de-France</td><td>Frank Lopez</td><td></td></tr><tr><td>4</td><td>37440394640</td><td></td><td>AIR</td><td>6FJ4722398983</td><td>17-JUL-2025</td><td>25-SEP-2025</td><td>Ille-de-France</td><td>Frank Lopez</td><td></td></tr><tr><td>5</td><td>37440394640</td><td></td><td>AIR</td><td>6FJ4722398983</td><td>19-JUN-2025</td><td>24-JUL-2025</td><td>Ille-de-France</td><td>Frank Lopez</td><td></td></tr></tbody></table>",
+      "native_label": "table"
+    }
+  ]
+]

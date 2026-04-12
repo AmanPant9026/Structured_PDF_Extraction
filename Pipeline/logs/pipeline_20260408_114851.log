@@ -1,0 +1,14 @@
+2026-04-08 11:48:51 | pdf_extractor.pipeline         | INFO     | pipeline_start | doc_type="shipping_bill"
+2026-04-08 11:48:51 | pdf_extractor.pipeline         | INFO     | step_preprocess
+2026-04-08 11:48:51 | pdf_extractor.pipeline         | INFO     | step_evidence
+2026-04-08 11:48:51 | pdf_extractor.pipeline         | INFO     | evidence_built | n_blocks=236
+2026-04-08 11:48:51 | pdf_extractor.pipeline         | INFO     | step_schema
+2026-04-08 11:48:51 | pdf_extractor.pipeline         | INFO     | step_extract
+2026-04-08 11:48:51 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="sb_no"
+2026-04-08 11:48:58 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="sb_date"
+2026-04-08 11:48:59 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="port_code"
+2026-04-08 11:49:00 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="exporter"
+2026-04-08 11:49:03 | pdf_extractor.pipeline         | INFO     | step_repair
+2026-04-08 11:49:03 | pdf_extractor.pipeline         | INFO     | step_validate
+2026-04-08 11:49:03 | pdf_extractor.pipeline         | INFO     | pipeline_done | doc_type="shipping_bill" | elapsed=11.52 | valid=true
+2026-04-08 11:49:03 | pdf_extractor.pipeline         | INFO     | result_saved | path="output/shipping_order_result.json"

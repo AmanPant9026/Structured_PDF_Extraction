@@ -1,0 +1,58 @@
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | INFO     | pipeline_start | doc_type="purchase_order"
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | INFO     | step_preprocess
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | INFO     | step_evidence
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | INFO     | evidence_built | n_blocks=251
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | INFO     | step_schema
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | INFO     | step_extract
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Supplier"
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Buyer"
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="BuyerAddress"
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="BuyerName"
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Dept"
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="FtyNo"
+2026-03-18 11:02:41 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="PMNo"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Date"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="ArticleNo"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="FCReferenceNo"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Incoterm"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="ShipRef"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="OurItemNo"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="CustomerItemNo"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="PoNo"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="CountryOfOriginRegion"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="ProductionCountryRegion"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Quantity"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="UnitPrice"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="No"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="PortOfLoading"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="FinalDestination"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="DistributionCentre"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="ShipMode"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="DeliveryDate"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="ShipDate"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="QuantityInner"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="QuantityCTN"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="NoOfCartons"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="NetWeight"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="GrossWeight"
+2026-03-18 11:02:42 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="MEAS"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="HSCode"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="raw"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="PLIRate"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="TotalPLIAmount"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Total Value of Order"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="ShipmentTime"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="PaymentTerms"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="MarkingOfGoods"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Certificate"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="SupplierNote"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | INFO     | step_repair
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | INFO     | step_validate
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | INFO     | pipeline_done | doc_type="purchase_order" | elapsed=1.99 | valid=true
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | INFO     | pipeline_start | doc_type="shipping_bill"
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | INFO     | step_preprocess
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | INFO     | step_evidence
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | INFO     | evidence_built | n_blocks=236
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | INFO     | step_schema
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | INFO     | step_extract
+2026-03-18 11:02:43 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Heading-1"

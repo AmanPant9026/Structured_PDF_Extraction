@@ -1,0 +1,126 @@
+{
+  "document_type": "purchase_order",
+  "version": "1.0",
+  "description": "Li & Fung style Placement Memorandum / Purchase Order",
+  "fields": {
+    "pm_number": {
+      "type": "string",
+      "required": true,
+      "description": "Placement Memorandum reference number",
+      "aliases": ["P/M NO", "P/M NUMBER", "PO NUMBER"]
+    },
+    "order_date": {
+      "type": "string",
+      "required": true,
+      "description": "Date the order was placed (YYYY-MM-DD)"
+    },
+    "supplier_name": {
+      "type": "string",
+      "required": true,
+      "description": "Name of the supplier / factory",
+      "aliases": ["SUPPLIER", "VENDOR", "FACTORY NAME"]
+    },
+    "buyer_name": {
+      "type": "string",
+      "required": true,
+      "description": "Name of the buyer / brand",
+      "aliases": ["BUYER", "CUSTOMER", "BUYING AGENT"]
+    },
+    "buyer_address": {
+      "type": "string",
+      "required": false,
+      "description": "Full address of the buyer"
+    },
+    "buyer_contact": {
+      "type": "string",
+      "required": false,
+      "description": "Contact person at the buyer side",
+      "aliases": ["BUYER CONTACT", "CONTACT PERSON"]
+    },
+    "department": {
+      "type": "string",
+      "required": false,
+      "description": "Buyer's department code",
+      "aliases": ["DEPT", "DEPT.", "DEPARTMENT"]
+    },
+    "factory_no": {
+      "type": "string",
+      "required": false,
+      "description": "Factory identification number",
+      "aliases": ["FTY. NO.", "FTY NO", "FACTORY NUMBER"]
+    },
+    "article_no": {
+      "type": "string",
+      "required": false,
+      "description": "Article / style number",
+      "aliases": ["ARTICLE NO.", "STYLE NO", "ITEM NO"]
+    },
+    "description": {
+      "type": "string",
+      "required": false,
+      "description": "Description of the ordered goods"
+    },
+    "total_quantity": {
+      "type": "number",
+      "required": false,
+      "description": "Total ordered quantity across all shipments",
+      "aliases": ["TOTAL QTY", "TOTAL QUANTITY"]
+    },
+    "shipments": {
+      "type": "list",
+      "list_root": true,
+      "required": false,
+      "description": "Individual shipment schedule rows",
+      "items": {
+        "ship_no": {
+          "type": "string",
+          "required": true,
+          "description": "Shipment line number",
+          "aliases": ["SHIP NO.", "SHIPMENT NO"]
+        },
+        "ship_ref": {
+          "type": "string",
+          "required": false,
+          "description": "Internal shipment reference",
+          "aliases": ["SHIP REF.", "SHIPMENT REF"]
+        },
+        "ship_mode": {
+          "type": "string",
+          "required": false,
+          "description": "Mode of transport: AIR or SEA",
+          "aliases": ["SHIP MODE", "MODE", "SHIPPING MODE"]
+        },
+        "customer_order_no": {
+          "type": "string",
+          "required": false,
+          "description": "Customer's purchase order number",
+          "aliases": ["CUST ORDER NO.", "CUSTOMER ORDER", "PO NUMBER"]
+        },
+        "scheduled_delivery": {
+          "type": "string",
+          "required": false,
+          "description": "Original scheduled delivery date (YYYY-MM-DD)",
+          "aliases": ["SCH DLY", "RE-SCH/SCH DLY", "SCHEDULED DELIVERY DATE"]
+        },
+        "rescheduled_date": {
+          "type": "string",
+          "required": false,
+          "description": "Re-scheduled or final delivery date (YYYY-MM-DD)",
+          "aliases": ["RE-SCH/SCH DATE", "RESCHEDULED DATE", "SHIP DATE"]
+        },
+        "port_of_discharge": {
+          "type": "string",
+          "required": false,
+          "description": "Port / region where goods will be delivered",
+          "aliases": ["PORT OF DISCHARGE", "DESTINATION", "POD"]
+        },
+        "forwarder": {
+          "type": "string",
+          "required": false,
+          "description": "Freight forwarder name",
+          "aliases": ["FORWARDER", "FREIGHT FORWARDER", "AGENT"]
+        }
+      }
+    }
+  }
+}

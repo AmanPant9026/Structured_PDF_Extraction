@@ -1,0 +1,546 @@
+{
+  "schema_version": "shipping_bill_v1",
+  "source": {
+    "pdf_filename": "MI-2351-6827 Shipping Bill.pdf",
+    "document_type": "shipping_bill",
+    "page_count": 6
+  },
+  "shipping_bill": {
+    "common": {
+      "Heading-1": "INDIAN CUSTOMS EDI SYSTEM",
+      "Sub-Heading-1": "CENTRAL BOARD OF INDIRECT TAXES AND CUSTOMS\nDEPARTMENT OF REVENUE  -  MINISTRY OF FINANCE\nGOVERNMENT OF INDIA",
+      "port_name": "Adani Hazira Terminal",
+      "header_ids": {
+        "port_code": "INHZA1",
+        "sb_no": "56515593",
+        "sb_date": "15-DEC-24",
+        "IEC": "3LW3532546992",
+        "Br": "91",
+        "GSTIN/TYPE": "30FRBXH5692X5ZH GST",
+        "CB_CODE": "TYWHG9230EMQ342",
+        "TYPE": {
+          "NosINV": "8",
+          "NosITEM": "1",
+          "NosCONT": "8"
+        },
+        "PKGINV": "26",
+        "G.WT": {
+          "unit": "KGS",
+          "value": "99.32"
+        },
+        "CODE BELOW QR": "INV25111815333289"
+      },
+      "HEADING-4": "Scan QR Code  using ICETRAK Mobile App  for authentication.\nVisit  ICEGATE portal to verify latest version*.",
+      "watermark": "LET EXPORT COPY"
+    },
+    "pages": [
+      {
+        "page_number": 1,
+        "page_label": "Page 1 Of 6",
+        "HEADING-2": {
+          "Title": "PART - I - SHIPPING BILL SUMMARY",
+          "SUBHEADINg-2": {
+            "A STATUS": {
+              "1.MODE": "SEA",
+              "2.ASSESS": "Y",
+              "3.EXMN": "N",
+              "4.JOBBING": "Y",
+              "5.MEIS": "Y",
+              "6.DBK": "N",
+              "7.RODTP": "Y",
+              "8.LICENCE": "Y",
+              "9.DFRC": "Y",
+              "10.RE-EXP": "N",
+              "11.LUT": "N",
+              "12.PORT OF LOADING": "INHZA1 (Surat)",
+              "13.COUNTRY OF FINALDESTINATIO": "Brazil",
+              "14.STATE OF ORIGIN": "VERMONT",
+              "15.PORT OF FINAL DESTINATION": "Northern Territory",
+              "16.PORT OF DISCHARGE": "Northern Territory",
+              "17.COUNTRY OF DISCHARGE": "UNITED STATES"
+            },
+            "B DECLARAN DETAILS": {
+              "1.EXPORTER'S NAME & ADDRESS": "BAHL THAKER AND MANDA GROUP\nMAPLE STREET\n753374, VERMONT UNITED STATES\nHARTFORD",
+              "2.Type": "Public",
+              "3. AD CODE:": "2947818",
+              "4.RBI WAIVER NO.& DT": null,
+              "5.CB NAME": "ZL GLOBAL EXPRESS",
+              "6.AEO": null,
+              "7.CONSIGNEE NAME & ADDRESS": "SRIDHAR-MITTAL GROUP\nKLINGENTHAL-PASSAGE\nHERFORD, NORTH RHINE-WESTPHALIA\n900110, GERMANY",
+              "8. GSTIN / TYPE": "30FRBXH5692X5ZH GST",
+              "9.FOREX BANK A/C NO.": "51XXXXX266",
+              "10.DBK BANK A/C NO.": "51XXXXX266",
+              "11. IFSC NO.": "MCPP4716667"
+            },
+            "C VALU SUMMA": {
+              "1.FOB VALUE": "265852.58",
+              "2.FREIGHT": "0.0",
+              "3.INSURANC": null,
+              "4.DISCOU": null,
+              "5.COM": "0.0",
+              "6.DEDUCTIONS": "0.0",
+              "7.P/C": "0.0",
+              "8.DUTY": "0.0",
+              "9.CESS": "0.0"
+            },
+            "D. EX.PR.": {
+              "1.DBK CLAIM": "4692.44",
+              "2.IGST AMT": "16166.07",
+              "3.CESS AMT": "0.0",
+              "4.IGST VALUE": "134717.27",
+              "5.RODTEP AMT": "1616.61",
+              "6.ROSCTL AMT": "0.0"
+            },
+            "E MANIFEST DETAILS": {
+              "1.MAWB NO.": null,
+              "2.MAWB DT": null,
+              "3.HAWB NO.": null,
+              "4.HAWB DT": null,
+              "N.O.C.": null,
+              "4. CIN NO.": "34ETCA38632806850854",
+              "5. CIN DT.": "02-DEC-23",
+              "6. CIN SITE ID": "INHZA1"
+            },
+            "F INVOICE SUMMARY": {
+              "1.SNO": "1",
+              "2.INV NO.": "MI-2351-6827",
+              "3.INV AMT.": "569.4",
+              "4.CURRENC": "EUR"
+            },
+            "G. EQUIPMENT DETAILS": {
+              "1.CONTAINER": null,
+              "2.SEAL": null,
+              "3.DATE": null,
+              "4.S No": null
+            },
+            "H CHALLAN DETAILS": {
+              "1SR.NO": null,
+              "2.CHALLAN NO": null,
+              "3.PAYMT DT": null,
+              "4.AMOUNT": null
+            },
+            "I ANNEX DETAILS": {
+              "1.SEAL TYPE": "FACTORY SEALED",
+              "2.NATURE OF CARGO": "CONTAINERISED",
+              "3.NO. OF PACKETS": "26",
+              "4.NO. OF CONTAINERS": "0",
+              "5.LOOSE PACKETS": "4",
+              "6.MARKS & NUMBERS": "AEO NO-ROOCMTAY4M8YS3IY. WE INTEND TO CLAIM REWARDS UNDER THE REMISSION OF DUTIES\nAND TAXES ON EXPORTED PRODUCTS (RODTEP) SCHEME (RATE 9179.34%)."
+            },
+            "J PROCESS DETAILS": {
+              "1.EVENT": {
+                "5.Submission": {
+                  "DATE": "28-NOV-25",
+                  "TIME": "00:00"
+                },
+                "6.Assessment": {
+                  "DATE": null,
+                  "TIME": null
+                },
+                "7.Examination": {
+                  "DATE": "29-NOV-25",
+                  "TIME": "00:00"
+                },
+                "9.LEO": {
+                  "DATE": "29-NOV-25",
+                  "TIME": "00:00"
+                }
+              },
+              "4.LEO NO.": "76/260",
+              "6.LEO Date.": "29-NOV-25",
+              "8.BRC Realisation Date": "18-SEP-26",
+              "10. SEZ UNIT Details": null
+            }
+          }
+        },
+        "Signature": {
+          "Raw-Text": "Signature Not Verified\nDigitally signed by DS CENTRAL BOARD\nOF INDIRECT TAXES AND CUSTOMS 08",
+          "Date": "2024.11.06",
+          "Time": "16:32:37 IST",
+          "Reason": "CUSTOMS",
+          "Location": "INDIA"
+        },
+        "HEADING-3": {
+          "Glossary": "A: ASSESS - Assessed, EXMN - Examined, MEIS - Merchandise Export Incentive Scheme, DBK - Drawback, ROSL - Rebate of State Levies,\nDEEC - Duty Exemption Entitlement Certificate, DFRC - Duty Free Replenishment Certificate,LUT - Letter of Under Taking.B: CB - Customs Broker\nAD Authorized Dealer , AEO - Authorized  Economic Operator , UCR - Unique  Customs Reference C: DISCOU - Discount, COM - Commission,\nP/C Packing Charges.D: EX. PR.- Export Promotions E: MAWB / HAWB - Master / House Airway Bill Number  J:BRC- Bank Realisation Certificate"
+        }
+      },
+      {
+        "page_number": 2,
+        "page_label": "Page 2 Of 6",
+        "HEADING-2": {
+          "Title": "PART - II - INVOICE DETAILS",
+          "SUBHEADINg-2": {
+            "A. REF": [
+              {
+                "1.S.No": "1",
+                "2.INVOICE No. & Dt.": "MI-2351-6827 15/12/2024",
+                "3.P.O.No. & Dt.": null,
+                "4.LoC No. & Dt": null,
+                "5.Contract No.&Dt": null,
+                "6.AD code": "2947818",
+                "7.INVTERM": "FCA"
+              }
+            ],
+            "B. TRANSACTION PARTIES": {
+              "1.EXPORTER'S NAME & ADDRESS": "BAHL THAKER AND MANDA GROUP\nMAPLE STREET\nHARTFORD-VERMONT\n753374",
+              "2.BUYER'S NAME & ADDRESS": "THAKKAR CHOPRA AND TRIVEDI CORP\nCALLE AMPUDIA DEL VALLE\nJIUTEPEC, MORELOS\nMEXICO, 834079",
+              "3.THIRD PARTY NAME & ADDRESS": "PANDEY LLC INC.\n70/277, TELLA ROAD\nMONTSEC, MEUSE\n579651, FRANCE",
+              "4.BUYER AEO STATUS": null
+            },
+            "C. VAL DTLS": {
+              "1.INVOICE VALUE": {
+                "value": "134717.27",
+                "currency": "EUR"
+              },
+              "2.FOB VALUE": {
+                "value": "134717.27",
+                "currency": "EUR"
+              },
+              "3FREIGHT": {
+                "value": "0",
+                "currency": "EUR"
+              },
+              "4.INSURANCE": {
+                "value": "0",
+                "currency": "EUR"
+              },
+              "5DISCOUNT": "0",
+              "6.COMMISON": "0",
+              "7.DEDUCT": "0",
+              "8.P/C": "0",
+              "9.EXCHANGE RATE": "1 DKK 83.11 INR"
+            },
+            "D. ITEM DETAILS": [
+              {
+                "1.ItemSNo": "1",
+                "2.HS CD": "33916993",
+                "3.DESCRIPTION": "CUSTOM FIT GREEN ULTRA THD+XL ZINC KNOB\nSML WITH WASHER INCLUDED",
+                "4.QUANTITY": "130",
+                "5.UQC": "PCS",
+                "6.RATE": "4.38",
+                "7.VALUE(F/C)": "569.4"
+              }
+            ]
+          }
+        },
+        "HEADING-3": {
+          "Glossary": "A: Ref - Reference P.O. - Purchase Order, LoC - Letter of Credit, AD - Authorised Dealer C: VAL DTLS - Valuation Details\nFOB - Freight On Board, DEDUCT - Deduction , P/C - Packing Charge D: HS CD - Harmonized  System Code, UQC - Unit Quantity Code"
+        }
+      },
+      {
+        "page_number": 3,
+        "page_label": "Page 3 Of 6",
+        "HEADING-2": {
+          "Title": "PART - III - ITEM DETAILS",
+          "SUBHEADINg-2": {
+            "Invoice(1/1)": [
+              {
+                "1INVSN": "1",
+                "2ITEMSN": "1",
+                "3.HS CD": "33916993",
+                "4.DESCRIPTION": "CUSTOM FIT GREEN ULTRA\nTHD+XL ZINC KNOB SML WITH\nWASHER INCLUDED",
+                "5.QUANTITY": "130",
+                "6UQC": "PCS",
+                "7.RATE": "4.38",
+                "8VALUE(F/C)": "569.4",
+                "9.FOB (INR)": "47322.83",
+                "10.PMV": "400.42",
+                "11.DUTYAMT": null,
+                "12.CESS RT": null,
+                "13CESAMT": null,
+                "14.DBKCLMD": "Y",
+                "15.IGSTSTAT": "P",
+                "16. IGST VALUE": "47322.83",
+                "17. IGST AMOUNT": "569.4",
+                "18SCHCOD": "11",
+                "19. SCHEME DESCRIPTION": "Drawback",
+                "20. SQC MSR": "1978.88",
+                "21. SQC UQC": "KGS",
+                "22. STATE OF ORIGIN": "VERMONT",
+                "23. DISTRICT OF ORIGIN": "HARTFORD",
+                "24. PT Abroad": "GSTP",
+                "25.COMP CESS": "0 INR",
+                "26.END USE": "EEr865",
+                "27.FTA BENEFIT AVAILED": "Y",
+                "28. REWARD BENEFIT": "Yes",
+                "29. THIRD PARTY ITEM": "N"
+              }
+            ]
+          }
+        },
+        "HEADING-3": {
+          "Glossary": "FOB - Freight On Board, HS CD Harmonized  System Code, UQC - Unit Quantity Code, PMV - Present Market Value, CESAM - Cess Amount\nIGSTSTA - IGST Payment Status, VAL - IGST Value, PAID - IGST Amount Paid, SCHCOD - Scheme Code, SQC MSR - Standard Quantity\nMeasurement, comp - compensatory, PT Abroad - Preferential treatment Availed Abroad"
+        }
+      },
+      {
+        "page_number": 4,
+        "page_label": "Page 4 Of 6",
+        "HEADING-2": {
+          "Title": "PART - IV - EXPORT SCHEME DETAILS",
+          "SUBHEADINg-2": {
+            "OTHER ADDIIONAL INFORMATION":[
+              {
+                "A. DRAWBACK & ROSL CLAIM": [
+                  {
+                    "1.INV SNO": "1",
+                    "2.ITEM SNO": "1",
+                    "3.DBK SNO.": "378530E",
+                    "4.QTY/WT": "130",
+                    "5.VALUE": "47322.83",
+                    "6.RATE": "1.5",
+                    "7.DBK AMT": "709.84",
+                    "8.STALEV": "0",
+                    "9.CENLEV": "0",
+                    "10.ROSCTL AMT": "0"
+                  }
+                ],
+                "B. AA / DFIA LICENCE DETAILS": [
+                  {
+                    "1.INV SNO":null,
+                    "2.ITEM SNO":null,
+                    "3.LICENSE NO":null,
+                    "4.DESCN OF EXPORT ITEM":null,
+                    "5.EXP SNO":null,
+                    "6.EXPQTY":null,
+                    "7.UQC":null,
+                    "8.FOB VALUE":null,
+                    "9.SION":null,
+                    "10.DESCN OF IMPORT ITEM":null,
+                    "11IMP SNO0":null,
+                    "12IMPQT":null,
+                    "13.UQC":null,
+                    "14.INDIG/IMP":null
+                  }
+                ],
+                "C. JOBBING DETAILS": [
+                  {
+                    "1.BE NO":null,
+                    "2.BE DATE":null,
+                    "3.PORT CODE":null,
+                    "4.DESCN OF IMPORTED GOODS":null,
+                    "5.QTY IMP":null,
+                    "6.QTY USED":null
+                  }
+                ],
+                "D. SINGLE WINDOW DECLARATION": [
+                  {
+                    "1.INVSN": "1",
+                    "2.ITMSN": "1",
+                    "3.INFO": "DTY",
+                    "4.QUALIFIER": "RDT",
+                    "5.INFO CD": "RODTEPY",
+                    "6.INFO TEXT": null,
+                    "7.INFO MSR": "1978.88",
+                    "8.UQC": "KGS"
+                  },
+                  {
+                    "1.INVSN": "1",
+                    "2.ITMSN": "1",
+                    "3.INFO": "ORC",
+                    "4.QUALIFIER": "EPT",
+                    "5.INFO CD": "GSTP",
+                    "6.INFO TEXT": null,
+                    "7.INFO MSR": null,
+                    "8.UQC": null
+                  },
+                  {
+                    "1.INVSN": "1",
+                    "2.ITMSN": "1",
+                    "3.INFO": "ORC",
+                    "4.QUALIFIER": "STO",
+                    "5.INFO CD": "09",
+                    "6.INFO TEXT": null,
+                    "7.INFO MSR": null,
+                    "8.UQC": null
+                  },
+                  {
+                    "1.INVSN": "1",
+                    "2.ITMSN": "1",
+                    "3.INFO": "DTY",
+                    "4.QUALIFIER": "GCESS",
+                    "5.INFO CD": null,
+                    "6.INFO TEXT": null,
+                    "7.INFO MSR": "0",
+                    "8.UQC": "INR"
+                  },
+                  {
+                    "1.INVSN": "1",
+                    "2.ITMSN": "1",
+                    "3.INFO": "CHR",
+                    "4.QUALIFIER": "SQC",
+                    "5.INFO CD": null,
+                    "6.INFO TEXT": null,
+                    "7.INFO MSR": "1978.88",
+                    "8.UQC": "KGS"
+                  },
+                  {
+                    "1.INVSN": "1",
+                    "2.ITMSN": "1",
+                    "3.INFO": "ORC",
+                    "4.QUALIFIER": "DOO",
+                    "5.INFO CD": "171",
+                    "6.INFO TEXT": null,
+                    "7.INFO MSR": null,
+                    "8.UQC": null
+                  }
+                ],
+                "E. SINGLE WINDOW DECLARATION - CONSTITUENTS": [
+                    {
+                      "1.INVSN":null,
+                      "2.ITMSNO":null,
+                      "3.C SNO":null,
+                      "4.NAME":null,
+                      "5.CODE":null,
+                      "6.PERCENTAGE":null,
+                      "7.YIELD PCT":null,
+                      "8.ING":null
+                    }
+                  ],
+                "F. SINGLE WINDOW DECLARATION - CONTROL": [
+                    {
+                      "1.INVSN":null,
+                      "2.ITMSNO":null,
+                      "3.CONTROL TYPE":null,
+                      "4.LOCATION":null,
+                      "5.ST DT":null,
+                      "6.END DT":null,
+                      "7.RES CD":null,
+                      "8. RES TEXT":null
+                    }
+                  ],
+                "G. SUPPORTING DOCUMENTS": [
+                  {
+                    "1.INVSN": "1",
+                    "2.ITMSN": "0",
+                    "3 DOCTYPCD": "610681",
+                    "4. ICEGATE ID": "ZLGLOBALEXPRES",
+                    "5. IRN": "9376614277922179",
+                    "6.PARTY CD": "01",
+                    "7.ISSUE PLA": "VERMONT",
+                    "8.ISS DT": "15-DEC-24",
+                    "9.EXP DT": null
+                  },
+                  {
+                    "1.INVSN": "1",
+                    "2.ITMSN": "0",
+                    "3 DOCTYPCD": "227205",
+                    "4. ICEGATE ID": "ZLGLOBALEXPRES",
+                    "5. IRN": "3893761063047927",
+                    "6.PARTY CD": "01",
+                    "7.ISSUE PLA": "UNITED STATES",
+                    "8.ISS DT": "15-DEC-24",
+                    "9.EXP DT": null
+                  }
+                ],
+                "H. INVOICE DETAILS": [
+                  {
+                    "1.SNO": "1",
+                    "2.INVOICE NO": "MI-2351-6827",
+                    "3.INVOICE AMOUNT": "134717.27",
+                    "4.CURRENCY": "EUR"
+                  }
+                ],
+                "I. CONTAINER DETAILS": [
+                  {
+                    "1.SNO":null,
+                    "2.CONTAINER":null,
+                    "3.SEAL":null,
+                    "4.DATE":null
+                  }
+                ],
+                "J.AR4 DETAILS": [
+                  {
+                    "1.INVSN":null,
+                    "2.ITMSN":null,
+                    "3.AR4 NUMBER":null,
+                    "4.AR4 DATE":null,
+                    "5.COMMISIONERATE":null,
+                    "6.DIVISION":null,
+                    "7.RANGE":null
+                  }
+                ],
+                "K. THIRD PARTY DETAILS": [
+                  {
+                    "1.INVSN":null,
+                    "2.ITMSN":null,
+                    "3.IEC":null,
+                    "4.EXPORTER NAME":null,
+                    "5.ADDRESS":null,
+                    "6.GSTN ID AND TYPE":null
+                  }
+                ],
+                "L. ITEM MANUFACTURER/PRODUCER/GROWER DETAILS": [
+                  {
+                    "1.INVSN":null,
+                    "2.ITMSN":null,
+                    "3.TYPE":null,
+                    "4.MANUFACT CD":null,
+                    "5.SOURCE STATE":null,
+                    "6.TRANS CY":null,
+                    "7.ADDRESS":null
+                  }
+                ],
+                "M. RODTEP DETAILS": [
+                  {
+                    "1.INVSN": "1",
+                    "2.ITMSN": "1",
+                    "3. QUANTITY": "1978.88",
+                    "4. UQC": "KGS",
+                    "5. NO. OF  UNITS": "1",
+                    "6. VALUE": "1616"
+                  }
+                ]
+
+              }
+            ]
+            
+          }
+        },
+        "HEADING-3": {
+          "Glossary": "INVSN - Invoice Serial Number ITMSN - Item Serial Number A: DBK - Drawback, ROSL - Rebate of State Levies, B: DFIA - Duty Free Import\nAuthorization, EXP - Export , IMP - Import , UQC-Unit Quantity CodeFOB - Freight On Board  D: INFO - Information  CD - Code MSR - Measuremen\nE: ING - Ingredient F :  RES CD - Result Code, RES TXT - Result Text ST DT -Start Date  G: IRN - Image Reference Number CD - Code  PLA - Pla"
+        }
+      },
+      {
+        "page_number": 5,
+        "page_label": "Page 5 Of 6",
+        "HEADING-2": {
+          "Title": "PART - IV - EXPORT SCHEME DETAILS",
+          "SUBHEADINg-2": {
+            "N. REEXPORT DETAILS": [
+                {
+                  "1.INVS":null,
+                  "2.ITMSN":null,
+                  "3.BE SITE ID":null,
+                  "4.BE NUMBER":null,
+                  "5.BE DATE":null,
+                  "6.BE INV SNO":null,
+                  "7.BE ITEM S":null,
+                  "8. BE QTY":null,
+                  "9. BE UQC":null
+                }
+              ]
+            }
+          },
+        "HEADING-3": {
+          "Glossary": "INVSN - Invoice Serial Number ITMSN - Item Serial Number A: DBK - Drawback, ROSL - Rebate of State Levies, B: DFIA - Duty Free Import\nAuthorization, EXP - Export , IMP - Import , UQC-Unit Quantity CodeFOB - Freight On Board  D: INFO - Information  CD - Code MSR - Measuremen\nE: ING - Ingredient F :  RES CD - Result Code, RES TXT - Result Text ST DT -Start Date  G: IRN - Image Reference Number CD - Code  PLA - Pla"
+        }
+      },
+      {
+        "page_number": 6,
+        "page_label": "Page 6 Of 6",
+        "HEADING-2": {
+          "Title": "PART - V - DECLARATIONS",
+          "SUBHEADINg-2": {
+            "A. DECLARATION STATEMENT": null,
+            "B. AUTHORIZED SIGNATORY": {
+              "DATE": null,
+              "PLACE": null,
+              "AUTHORIZED SIGNATORY": null,
+              "CHA NAME": "TYWHG9230EMQ342"
+            }
+          }
+        }
+      }
+    ]
+  }
+}

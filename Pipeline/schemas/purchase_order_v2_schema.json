@@ -1,0 +1,183 @@
+{
+  "document_type": "purchase_order",
+  "version": "2.0",
+  "description": "Li & Fung Placement Memorandum - matches gt_purchase.json exactly",
+  "fields": {
+
+    "Header": {
+      "type": "object",
+      "description": "Top-level header block from the main PM table",
+      "fields": {
+        "Supplier": {
+          "type": "string",
+          "required": true,
+          "description": "Supplier / factory name",
+          "aliases": ["SUPPLIER", "VENDOR", "FACTORY"]
+        },
+        "Buyer": {
+          "type": "string",
+          "required": true,
+          "description": "Buyer company name",
+          "aliases": ["BUYER", "CUSTOMER"]
+        },
+        "BuyerAddress": {
+          "type": "string",
+          "required": false,
+          "description": "Full buyer postal address",
+          "aliases": ["BUYER ADDRESS", "BUYER'S ADDRESS"]
+        },
+        "BuyerName": {
+          "type": "string",
+          "required": false,
+          "description": "Buyer contact person name",
+          "aliases": ["Buyer:", "BUYER CONTACT", "CONTACT PERSON"]
+        },
+        "Dept": {
+          "type": "string",
+          "required": false,
+          "description": "Buyer department code",
+          "aliases": ["DEPT.", "DEPT", "DEPARTMENT"]
+        },
+        "FtyNo": {
+          "type": "string",
+          "required": false,
+          "description": "Factory number",
+          "aliases": ["FTY. NO.", "FTY NO", "FACTORY NO"]
+        },
+        "PMNo": {
+          "type": "string",
+          "required": true,
+          "description": "Placement Memorandum reference number",
+          "aliases": ["P/M No.", "P/M NO", "PM NO", "PLACEMENT MEMORANDUM NO"]
+        },
+        "Date": {
+          "type": "string",
+          "required": true,
+          "description": "Order date (DD-MON-YYYY)",
+          "aliases": ["DATE", "ORDER DATE"]
+        }
+      }
+    },
+
+    "RowWiseTable": {
+      "type": "list",
+      "list_root": true,
+      "required": true,
+      "description": "Shipment schedule rows from the main PM table (pages 0-1)",
+      "items": {
+        "Item": {
+          "type": "string",
+          "required": false,
+          "description": "Computed item label e.g. Item 1, Item 2",
+          "aliases": []
+        },
+        "ShipNo": {
+          "type": "string",
+          "required": true,
+          "description": "Shipment line number",
+          "aliases": ["SHIP NO.", "SHIP NO", "SHIPMENT NO"]
+        },
+        "ShipRef": {
+          "type": "string",
+          "required": false,
+          "description": "Shipment reference / article number",
+          "aliases": ["SHIP REF.", "SHIP REF", "ARTICLE NO"]
+        },
+        "ShipMode": {
+          "type": "string",
+          "required": false,
+          "description": "Transport mode: AIR or SEA",
+          "aliases": ["SHIP MODE", "MODE", "SHIPPING MODE"]
+        },
+        "CustOrderNo": {
+          "type": "string",
+          "required": false,
+          "description": "Customer purchase order number",
+          "aliases": ["CUST ORDER NO.", "CUSTOMER ORDER NO", "PO NUMBER"]
+        },
+        "ReSchSchDly": {
+          "type": "string",
+          "required": false,
+          "description": "Scheduled delivery date (DD-MON-YYYY)",
+          "aliases": ["RE-SCH/SCH DLY", "SCHEDULED DELIVERY", "SCH DLY"]
+        },
+        "ReSchDate": {
+          "type": "string",
+          "required": false,
+          "description": "Re-scheduled ship date (DD-MON-YYYY)",
+          "aliases": ["RE-SCH/SCH DATE", "RESCHEDULED DATE", "SHIP DATE"]
+        },
+        "PortOfDischarge": {
+          "type": "string",
+          "required": false,
+          "description": "Port or region of discharge / delivery",
+          "aliases": ["PORT OF DISCHARGE", "POD", "DESTINATION"]
+        },
+        "Forwarder": {
+          "type": "string",
+          "required": false,
+          "description": "Freight forwarder name",
+          "aliases": ["FORWARDER", "FREIGHT FORWARDER", "AGENT"]
+        }
+      }
+    },
+
+    "Details-1": {
+      "type": "object",
+      "required": false,
+      "description": "Summary item block from page 0 header table: ArticleNo, Quantity, UnitPrice",
+      "fields": {
+        "Quantity": {
+          "type": "string",
+          "required": false,
+          "description": "Total quantity string e.g. 400,264 PCS",
+          "aliases": ["TOTAL QUANTITY", "QTY", "Quantity"]
+        },
+        "UnitPrice": {
+          "type": "string",
+          "required": false,
+          "description": "Unit price string e.g. USD1936.2436",
+          "aliases": ["UNIT PRICE", "Unit Price", "PRICE"]
+        }
+      }
+    },
+
+    "Footer": {
+      "type": "object",
+      "required": false,
+      "description": "Footer fields common to all PM pages",
+      "fields": {
+        "ShipmentTime": {
+          "type": "string",
+          "required": false,
+          "description": "Shipment lead time",
+          "aliases": ["Shipment Time:", "SHIPMENT TIME"]
+        },
+        "PaymentTerms": {
+          "type": "string",
+          "required": false,
+          "description": "Payment terms text",
+          "aliases": ["Payment Terms:", "PAYMENT TERMS"]
+        },
+        "MarkingOfGoods": {
+          "type": "string",
+          "required": false,
+          "description": "Marking instructions for goods",
+          "aliases": ["Marking on Goods:", "MARKING OF GOODS"]
+        },
+        "Certificate": {
+          "type": "string",
+          "required": false,
+          "description": "Certificate requirement text",
+          "aliases": ["Certificate:", "CERTIFICATE"]
+        },
+        "SupplierNote": {
+          "type": "string",
+          "required": false,
+          "description": "Supplier acceptance note",
+          "aliases": ["The Supplier acknowledges"]
+        }
+      }
+    }
+  }
+}

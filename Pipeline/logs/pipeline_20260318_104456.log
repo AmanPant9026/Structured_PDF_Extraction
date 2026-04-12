@@ -1,0 +1,15 @@
+2026-03-18 10:44:56 | pdf_extractor.pipeline         | INFO     | pipeline_start | doc_type="shipping_bill"
+2026-03-18 10:44:56 | pdf_extractor.pipeline         | INFO     | step_preprocess
+2026-03-18 10:44:56 | pdf_extractor.pipeline         | INFO     | step_evidence
+2026-03-18 10:44:56 | pdf_extractor.pipeline         | INFO     | evidence_built | n_blocks=36
+2026-03-18 10:44:56 | pdf_extractor.pipeline         | INFO     | step_schema
+2026-03-18 10:44:56 | pdf_extractor.pipeline         | INFO     | step_extract
+2026-03-18 10:44:56 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="sb_no"
+2026-03-18 10:44:57 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="sb_date"
+2026-03-18 10:44:57 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="port_code"
+2026-03-18 10:44:57 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="exporter"
+2026-03-18 10:44:57 | pdf_extractor.pipeline         | INFO     | step_repair
+2026-03-18 10:44:57 | pdf_extractor.pipeline         | INFO     | step_validate
+2026-03-18 10:44:57 | pdf_extractor.pipeline         | WARNING  | validation_issue | severity="error" | path="sb_no" | message="Required field 'sb_no' is missing"
+2026-03-18 10:44:57 | pdf_extractor.pipeline         | WARNING  | validation_issue | severity="error" | path="sb_date" | message="Required field 'sb_date' is missing"
+2026-03-18 10:44:57 | pdf_extractor.pipeline         | INFO     | pipeline_done | doc_type="shipping_bill" | elapsed=0.17 | valid=false

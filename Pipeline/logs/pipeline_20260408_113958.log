@@ -1,0 +1,11 @@
+2026-04-08 11:39:58 | pdf_extractor.pipeline         | INFO     | pipeline_start | doc_type="purchase_order"
+2026-04-08 11:39:58 | pdf_extractor.pipeline         | INFO     | step_preprocess
+2026-04-08 11:39:58 | pdf_extractor.pipeline         | INFO     | step_evidence
+2026-04-08 11:39:58 | pdf_extractor.pipeline         | INFO     | evidence_built | n_blocks=236
+2026-04-08 11:39:58 | pdf_extractor.pipeline         | INFO     | step_schema
+2026-04-08 11:39:58 | pdf_extractor.pipeline         | INFO     | step_extract
+2026-04-08 11:39:58 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Header"
+2026-04-08 11:40:04 | pdf_extractor.pipeline         | DEBUG    | extract_scalar | field="Footer"
+2026-04-08 11:40:05 | pdf_extractor.pipeline         | DEBUG    | extract_list | field="RowWiseTable"
+2026-04-08 11:40:17 | pdf_extractor.pipeline         | INFO     | step_repair
+2026-04-08 11:40:17 | pdf_extractor.pipeline         | INFO     | step_validate

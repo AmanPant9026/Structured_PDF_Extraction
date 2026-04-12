@@ -1,0 +1,11 @@
+# PDF Extraction Framework — open-source dependencies only
+# All packages below are MIT or Apache 2.0 licensed.
+# No proprietary API required. All LLM calls go to local Ollama server.
+
+# HTML table parsing (MIT)
+beautifulsoup4>=4.12.0
+lxml>=5.0.0
+
+# LLM backend: Ollama  (Apache 2.0 — install separately)
+# Install: https://ollama.com/install.sh
+# Model:   ollama pull qwen2.5:32b   (Apache 2.0)

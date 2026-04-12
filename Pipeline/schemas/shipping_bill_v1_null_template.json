@@ -1,0 +1,483 @@
+{
+  "schema_version": null,
+  "source": {
+    "pdf_filename": null,
+    "document_type": null,
+    "page_count": null
+  },
+  "shipping_bill": {
+    "common": {
+      "Heading-1": null,
+      "Sub-Heading-1": null,
+      "port_name": null,
+      "header_ids": {
+        "port_code": null,
+        "sb_no": null,
+        "sb_date": null,
+        "IEC": null,
+        "Br": null,
+        "GSTIN/TYPE": null,
+        "CB_CODE": null,
+        "TYPE": {
+          "NosINV": null,
+          "NosITEM": null,
+          "NosCONT": null
+        },
+        "PKGINV": null,
+        "G.WT": {
+          "unit": null,
+          "value": null
+        },
+        "CODE BELOW QR": null
+      },
+      "HEADING-4": null,
+      "watermark": null
+    },
+    "pages": [
+      {
+        "page_number": null,
+        "page_label": null,
+        "HEADING-2": {
+          "Title": null,
+          "SUBHEADINg-2": {
+            "A STATUS": {
+              "1.MODE": null,
+              "2.ASSESS": null,
+              "3.EXMN": null,
+              "4.JOBBING": null,
+              "5.MEIS": null,
+              "6.DBK": null,
+              "7.RODTP": null,
+              "8.LICENCE": null,
+              "9.DFRC": null,
+              "10.RE-EXP": null,
+              "11.LUT": null,
+              "12.PORT OF LOADING": null,
+              "13.COUNTRY OF FINALDESTINATIO": null,
+              "14.STATE OF ORIGIN": null,
+              "15.PORT OF FINAL DESTINATION": null,
+              "16.PORT OF DISCHARGE": null,
+              "17.COUNTRY OF DISCHARGE": null
+            },
+            "B DECLARAN DETAILS": {
+              "1.EXPORTER'S NAME & ADDRESS": null,
+              "2.Type": null,
+              "3. AD CODE:": null,
+              "4.RBI WAIVER NO.& DT": null,
+              "5.CB NAME": null,
+              "6.AEO": null,
+              "7.CONSIGNEE NAME & ADDRESS": null,
+              "8. GSTIN / TYPE": null,
+              "9.FOREX BANK A/C NO.": null,
+              "10.DBK BANK A/C NO.": null,
+              "11. IFSC NO.": null
+            },
+            "C VALU SUMMA": {
+              "1.FOB VALUE": null,
+              "2.FREIGHT": null,
+              "3.INSURANC": null,
+              "4.DISCOU": null,
+              "5.COM": null,
+              "6.DEDUCTIONS": null,
+              "7.P/C": null,
+              "8.DUTY": null,
+              "9.CESS": null
+            },
+            "D. EX.PR.": {
+              "1.DBK CLAIM": null,
+              "2.IGST AMT": null,
+              "3.CESS AMT": null,
+              "4.IGST VALUE": null,
+              "5.RODTEP AMT": null,
+              "6.ROSCTL AMT": null
+            },
+            "E MANIFEST DETAILS": {
+              "1.MAWB NO.": null,
+              "2.MAWB DT": null,
+              "3.HAWB NO.": null,
+              "4.HAWB DT": null,
+              "N.O.C.": null,
+              "4. CIN NO.": null,
+              "5. CIN DT.": null,
+              "6. CIN SITE ID": null
+            },
+            "F INVOICE SUMMARY": {
+              "1.SNO": null,
+              "2.INV NO.": null,
+              "3.INV AMT.": null,
+              "4.CURRENC": null
+            },
+            "G. EQUIPMENT DETAILS": {
+              "1.CONTAINER": null,
+              "2.SEAL": null,
+              "3.DATE": null,
+              "4.S No": null
+            },
+            "H CHALLAN DETAILS": {
+              "1SR.NO": null,
+              "2.CHALLAN NO": null,
+              "3.PAYMT DT": null,
+              "4.AMOUNT": null
+            },
+            "I ANNEX DETAILS": {
+              "1.SEAL TYPE": null,
+              "2.NATURE OF CARGO": null,
+              "3.NO. OF PACKETS": null,
+              "4.NO. OF CONTAINERS": null,
+              "5.LOOSE PACKETS": null,
+              "6.MARKS & NUMBERS": null
+            },
+            "J PROCESS DETAILS": {
+              "1.EVENT": {
+                "5.Submission": {
+                  "DATE": null,
+                  "TIME": null
+                },
+                "6.Assessment": {
+                  "DATE": null,
+                  "TIME": null
+                },
+                "7.Examination": {
+                  "DATE": null,
+                  "TIME": null
+                },
+                "9.LEO": {
+                  "DATE": null,
+                  "TIME": null
+                }
+              },
+              "4.LEO NO.": null,
+              "6.LEO Date.": null,
+              "8.BRC Realisation Date": null,
+              "10. SEZ UNIT Details": null
+            }
+          }
+        },
+        "Signature": {
+          "Raw-Text": null,
+          "Date": null,
+          "Time": null,
+          "Reason": null,
+          "Location": null
+        },
+        "HEADING-3": {
+          "Glossary": null
+        }
+      },
+      {
+        "page_number": null,
+        "page_label": null,
+        "HEADING-2": {
+          "Title": null,
+          "SUBHEADINg-2": {
+            "A. REF": [
+              {
+                "1.S.No": null,
+                "2.INVOICE No. & Dt.": null,
+                "3.P.O.No. & Dt.": null,
+                "4.LoC No. & Dt": null,
+                "5.Contract No.&Dt": null,
+                "6.AD code": null,
+                "7.INVTERM": null
+              }
+            ],
+            "B. TRANSACTION PARTIES": {
+              "1.EXPORTER'S NAME & ADDRESS": null,
+              "2.BUYER'S NAME & ADDRESS": null,
+              "3.THIRD PARTY NAME & ADDRESS": null,
+              "4.BUYER AEO STATUS": null
+            },
+            "C. VAL DTLS": {
+              "1.INVOICE VALUE": {
+                "value": null,
+                "currency": null
+              },
+              "2.FOB VALUE": {
+                "value": null,
+                "currency": null
+              },
+              "3FREIGHT": {
+                "value": null,
+                "currency": null
+              },
+              "4.INSURANCE": {
+                "value": null,
+                "currency": null
+              },
+              "5DISCOUNT": null,
+              "6.COMMISON": null,
+              "7.DEDUCT": null,
+              "8.P/C": null,
+              "9.EXCHANGE RATE": null
+            },
+            "D. ITEM DETAILS": [
+              {
+                "1.ItemSNo": null,
+                "2.HS CD": null,
+                "3.DESCRIPTION": null,
+                "4.QUANTITY": null,
+                "5.UQC": null,
+                "6.RATE": null,
+                "7.VALUE(F/C)": null
+              }
+            ]
+          }
+        },
+        "HEADING-3": {
+          "Glossary": null
+        }
+      },
+      {
+        "page_number": null,
+        "page_label": null,
+        "HEADING-2": {
+          "Title": null,
+          "SUBHEADINg-2": {
+            "Invoice(1/1)": [
+              {
+                "1INVSN": null,
+                "2ITEMSN": null,
+                "3.HS CD": null,
+                "4.DESCRIPTION": null,
+                "5.QUANTITY": null,
+                "6UQC": null,
+                "7.RATE": null,
+                "8VALUE(F/C)": null,
+                "9.FOB (INR)": null,
+                "10.PMV": null,
+                "11.DUTYAMT": null,
+                "12.CESS RT": null,
+                "13CESAMT": null,
+                "14.DBKCLMD": null,
+                "15.IGSTSTAT": null,
+                "16. IGST VALUE": null,
+                "17. IGST AMOUNT": null,
+                "18SCHCOD": null,
+                "19. SCHEME DESCRIPTION": null,
+                "20. SQC MSR": null,
+                "21. SQC UQC": null,
+                "22. STATE OF ORIGIN": null,
+                "23. DISTRICT OF ORIGIN": null,
+                "24. PT Abroad": null,
+                "25.COMP CESS": null,
+                "26.END USE": null,
+                "27.FTA BENEFIT AVAILED": null,
+                "28. REWARD BENEFIT": null,
+                "29. THIRD PARTY ITEM": null
+              }
+            ]
+          }
+        },
+        "HEADING-3": {
+          "Glossary": null
+        }
+      },
+      {
+        "page_number": null,
+        "page_label": null,
+        "HEADING-2": {
+          "Title": null,
+          "SUBHEADINg-2": {
+            "OTHER ADDIIONAL INFORMATION": [
+              {
+                "A. DRAWBACK & ROSL CLAIM": [
+                  {
+                    "1.INV SNO": null,
+                    "2.ITEM SNO": null,
+                    "3.DBK SNO.": null,
+                    "4.QTY/WT": null,
+                    "5.VALUE": null,
+                    "6.RATE": null,
+                    "7.DBK AMT": null,
+                    "8.STALEV": null,
+                    "9.CENLEV": null,
+                    "10.ROSCTL AMT": null
+                  }
+                ],
+                "B. AA / DFIA LICENCE DETAILS": [
+                  {
+                    "1.INV SNO": null,
+                    "2.ITEM SNO": null,
+                    "3.LICENSE NO": null,
+                    "4.DESCN OF EXPORT ITEM": null,
+                    "5.EXP SNO": null,
+                    "6.EXPQTY": null,
+                    "7.UQC": null,
+                    "8.FOB VALUE": null,
+                    "9.SION": null,
+                    "10.DESCN OF IMPORT ITEM": null,
+                    "11IMP SNO0": null,
+                    "12IMPQT": null,
+                    "13.UQC": null,
+                    "14.INDIG/IMP": null
+                  }
+                ],
+                "C. JOBBING DETAILS": [
+                  {
+                    "1.BE NO": null,
+                    "2.BE DATE": null,
+                    "3.PORT CODE": null,
+                    "4.DESCN OF IMPORTED GOODS": null,
+                    "5.QTY IMP": null,
+                    "6.QTY USED": null
+                  }
+                ],
+                "D. SINGLE WINDOW DECLARATION": [
+                  {
+                    "1.INVSN": null,
+                    "2.ITMSN": null,
+                    "3.INFO": null,
+                    "4.QUALIFIER": null,
+                    "5.INFO CD": null,
+                    "6.INFO TEXT": null,
+                    "7.INFO MSR": null,
+                    "8.UQC": null
+                  }
+                ],
+                "E. SINGLE WINDOW DECLARATION - CONSTITUENTS": [
+                  {
+                    "1.INVSN": null,
+                    "2.ITMSNO": null,
+                    "3.C SNO": null,
+                    "4.NAME": null,
+                    "5.CODE": null,
+                    "6.PERCENTAGE": null,
+                    "7.YIELD PCT": null,
+                    "8.ING": null
+                  }
+                ],
+                "F. SINGLE WINDOW DECLARATION - CONTROL": [
+                  {
+                    "1.INVSN": null,
+                    "2.ITMSNO": null,
+                    "3.CONTROL TYPE": null,
+                    "4.LOCATION": null,
+                    "5.ST DT": null,
+                    "6.END DT": null,
+                    "7.RES CD": null,
+                    "8. RES TEXT": null
+                  }
+                ],
+                "G. SUPPORTING DOCUMENTS": [
+                  {
+                    "1.INVSN": null,
+                    "2.ITMSN": null,
+                    "3 DOCTYPCD": null,
+                    "4. ICEGATE ID": null,
+                    "5. IRN": null,
+                    "6.PARTY CD": null,
+                    "7.ISSUE PLA": null,
+                    "8.ISS DT": null,
+                    "9.EXP DT": null
+                  }
+                ],
+                "H. INVOICE DETAILS": [
+                  {
+                    "1.SNO": null,
+                    "2.INVOICE NO": null,
+                    "3.INVOICE AMOUNT": null,
+                    "4.CURRENCY": null
+                  }
+                ],
+                "I. CONTAINER DETAILS": [
+                  {
+                    "1.SNO": null,
+                    "2.CONTAINER": null,
+                    "3.SEAL": null,
+                    "4.DATE": null
+                  }
+                ],
+                "J.AR4 DETAILS": [
+                  {
+                    "1.INVSN": null,
+                    "2.ITMSN": null,
+                    "3.AR4 NUMBER": null,
+                    "4.AR4 DATE": null,
+                    "5.COMMISIONERATE": null,
+                    "6.DIVISION": null,
+                    "7.RANGE": null
+                  }
+                ],
+                "K. THIRD PARTY DETAILS": [
+                  {
+                    "1.INVSN": null,
+                    "2.ITMSN": null,
+                    "3.IEC": null,
+                    "4.EXPORTER NAME": null,
+                    "5.ADDRESS": null,
+                    "6.GSTN ID AND TYPE": null
+                  }
+                ],
+                "L. ITEM MANUFACTURER/PRODUCER/GROWER DETAILS": [
+                  {
+                    "1.INVSN": null,
+                    "2.ITMSN": null,
+                    "3.TYPE": null,
+                    "4.MANUFACT CD": null,
+                    "5.SOURCE STATE": null,
+                    "6.TRANS CY": null,
+                    "7.ADDRESS": null
+                  }
+                ],
+                "M. RODTEP DETAILS": [
+                  {
+                    "1.INVSN": null,
+                    "2.ITMSN": null,
+                    "3. QUANTITY": null,
+                    "4. UQC": null,
+                    "5. NO. OF  UNITS": null,
+                    "6. VALUE": null
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "HEADING-3": {
+          "Glossary": null
+        }
+      },
+      {
+        "page_number": null,
+        "page_label": null,
+        "HEADING-2": {
+          "Title": null,
+          "SUBHEADINg-2": {
+            "N. REEXPORT DETAILS": [
+              {
+                "1.INVS": null,
+                "2.ITMSN": null,
+                "3.BE SITE ID": null,
+                "4.BE NUMBER": null,
+                "5.BE DATE": null,
+                "6.BE INV SNO": null,
+                "7.BE ITEM S": null,
+                "8. BE QTY": null,
+                "9. BE UQC": null
+              }
+            ]
+          }
+        },
+        "HEADING-3": {
+          "Glossary": null
+        }
+      },
+      {
+        "page_number": null,
+        "page_label": null,
+        "HEADING-2": {
+          "Title": null,
+          "SUBHEADINg-2": {
+            "A. DECLARATION STATEMENT": null,
+            "B. AUTHORIZED SIGNATORY": {
+              "DATE": null,
+              "PLACE": null,
+              "AUTHORIZED SIGNATORY": null,
+              "CHA NAME": null
+            }
+          }
+        }
+      }
+    ]
+  }
+}
