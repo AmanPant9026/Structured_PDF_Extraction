@@ -441,12 +441,4 @@ Repeat until fill rate is acceptable (aim for >80%)
 □ finalize() — all template sections filled, correct priority order
 ```
 
-### Testing
-```
-□ Dry run passes
-□ Full run completes with output JSON
-□ fill_rate_report > 80% on 3+ real documents
-□ All null fields investigated
-□ All wrong values investigated
-□ Tested across all layout variants
-```
+
