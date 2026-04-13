@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="Md_JSON_Extraction/frontend/assets/bosch.png" alt="Bosch Logo" width="220"/>
+<!-- <img src="Md_JSON_Extraction/frontend/assets/bosch.png" alt="Bosch Logo" width="220"/> -->
 
 # PDF Document Extraction Pipeline
 

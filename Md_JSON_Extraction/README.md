@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="frontend/assets/bosch.png" alt="Bosch Logo" width="200"/>
+<!-- <img src="frontend/assets/bosch.png" alt="Bosch Logo" width="200"/> -->
 
 # Md & JSON Extraction (Stage 1)
 

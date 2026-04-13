@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="../Md_JSON_Extraction/frontend/assets/bosch.png" alt="Bosch Logo" width="200"/>
+<!-- <img src="../Md_JSON_Extraction/frontend/assets/bosch.png" alt="Bosch Logo" width="200"/> -->
 
 > **This is Stage 2 of the pipeline.** Complete [Stage 1 (Md & JSON Extraction)](../Md_JSON_Extraction/README.md) first to get your OCR outputs.
 </div>
