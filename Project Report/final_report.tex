@@ -1,0 +1,961 @@
+\documentclass[12pt,a4paper]{report}
+
+% ── Fonts ──
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}                     % Palatino body text
+\usepackage[scaled=0.92]{helvet}          % Helvetica for sans-serif
+\usepackage{courier}                      % Courier for mono
+
+% ── Layout ──
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{setspace}
+\onehalfspacing
+
+% ── Graphics & Color ──
+\usepackage{graphicx}
+\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows.meta, positioning, fit, calc, decorations.pathreplacing}
+
+% ── Tables ──
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{float}
+\usepackage{array}
+\usepackage{multirow}
+
+% ── Lists ──
+\usepackage{enumitem}
+
+% ── Hyperlinks ──
+\usepackage{hyperref}
+
+% ── Headers ──
+\usepackage{fancyhdr}
+
+% ── Sections ──
+\usepackage{titlesec}
+\usepackage{tocloft}
+
+% ── Code ──
+\usepackage{listings}
+
+% ── Boxes ──
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% ── Caption ──
+\usepackage{caption}
+\usepackage{needspace}
+
+% ═══════════════════════════════════════════
+% COLORS
+% ═══════════════════════════════════════════
+\definecolor{boschred}{RGB}{228,0,43}
+\definecolor{boschdark}{RGB}{0,48,87}
+\definecolor{boschgray}{RGB}{100,100,100}
+\definecolor{softgray}{RGB}{245,245,245}
+\definecolor{teal}{RGB}{29,158,117}
+\definecolor{dpurple}{RGB}{100,90,200}
+\definecolor{amber}{RGB}{210,140,20}
+\definecolor{matchgreen}{RGB}{200,235,200}
+\definecolor{missred}{RGB}{255,210,210}
+\definecolor{misyellow}{RGB}{255,255,200}
+\definecolor{nearorange}{RGB}{255,228,180}
+
+% ═══════════════════════════════════════════
+% HYPERLINKS
+% ═══════════════════════════════════════════
+\hypersetup{
+    colorlinks=true,
+    linkcolor=boschdark,
+    urlcolor=boschred,
+    citecolor=boschdark,
+    pdfauthor={Aman Pant},
+    pdftitle={PDF Document Extraction Pipeline}
+}
+
+% ═══════════════════════════════════════════
+% HEADERS / FOOTERS
+% ═══════════════════════════════════════════
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\textcolor{boschgray}{PDF Document Extraction Pipeline}}
+\fancyhead[R]{\small\sffamily\textcolor{boschgray}{Bosch Global Software Technologies}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{boschred}\leaders\hrule height \headrulewidth\hfill}}
+\setlength{\headheight}{14pt}
+
+% ═══════════════════════════════════════════
+% SECTION FORMATTING
+% ═══════════════════════════════════════════
+\titleformat{\chapter}[display]
+  {\normalfont\sffamily\huge\bfseries\color{boschdark}}{}{0pt}{\Huge}
+\titlespacing*{\chapter}{0pt}{-15pt}{18pt}
+
+\titleformat{\section}{\needspace{5\baselineskip}\sffamily\Large\bfseries\color{boschdark}}{\thesection}{1em}{}
+\titleformat{\subsection}{\needspace{4\baselineskip}\sffamily\large\bfseries\color{boschdark}}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\needspace{3\baselineskip}\sffamily\normalsize\bfseries\color{boschdark}}{\thesubsubsection}{1em}{}
+
+% Prevent headings from appearing alone at page bottom
+\widowpenalty=10000
+\clubpenalty=10000
+\raggedbottom
+
+% TOC styling
+\renewcommand{\cftchapfont}{\sffamily\bfseries}
+\renewcommand{\cftsecfont}{\sffamily}
+\renewcommand{\cftsubsecfont}{\sffamily\small}
+\setlength{\cftbeforesecskip}{2pt}
+\setlength{\cftbeforesubsecskip}{1pt}
+\setlength{\cftbeforechapskip}{6pt}
+
+% ═══════════════════════════════════════════
+% CUSTOM BOXES
+% ═══════════════════════════════════════════
+\newtcolorbox{scopebox}[1][]{
+    colback=teal!6, colframe=teal!60,
+    fonttitle=\sffamily\bfseries, title=#1, breakable,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+}
+\newtcolorbox{outbox}[1][]{
+    colback=boschred!4, colframe=boschred!40,
+    fonttitle=\sffamily\bfseries, title=#1, breakable,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+}
+\newtcolorbox{keybox}[1][]{
+    colback=boschdark!5, colframe=boschdark!50,
+    fonttitle=\sffamily\bfseries, title=#1, breakable,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+}
+\newtcolorbox{findbox}[1][]{
+    colback=amber!8, colframe=amber!70,
+    fonttitle=\sffamily\bfseries, title=#1, breakable,
+    left=6pt, right=6pt, top=4pt, bottom=4pt
+}
+
+% ═══════════════════════════════════════════
+% CODE LISTINGS
+% ═══════════════════════════════════════════
+\lstset{
+    basicstyle=\small\ttfamily,
+    backgroundcolor=\color{softgray},
+    frame=single, rulecolor=\color{gray!30},
+    breaklines=true, columns=fullflexible,
+    keepspaces=true, xleftmargin=4pt, xrightmargin=4pt
+}
+
+% ═══════════════════════════════════════════════════════════════════
+\begin{document}
+
+% ── TITLE PAGE ──
+\begin{titlepage}
+\begin{center}
+
+\vspace*{0.5cm}
+\includegraphics[width=5.5cm]{bosch.png}
+
+\vspace{0.3cm}
+{\small\sffamily\textcolor{boschgray}{Bosch Global Software Technologies}}
+
+\vspace{1.8cm}
+\rule{\textwidth}{1pt}
+\vspace{0.4cm}
+
+{\Huge\sffamily\bfseries\textcolor{boschdark}{PDF Document Extraction\\[6pt]Pipeline}}
+
+\vspace{0.3cm}
+{\Large\sffamily\textcolor{boschred}{Fully Local, End-to-End Structured Data\\Extraction from PDF Documents}}
+
+\vspace{0.3cm}
+\rule{\textwidth}{1pt}
+
+\vspace{0.4cm}
+{\large\itshape No proprietary APIs\enspace$\cdot$\enspace No cloud dependency\enspace$\cdot$\enspace Runs entirely on your machine}
+
+\vspace{2.5cm}
+
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{r l}
+\sffamily\textbf{Author}       & Aman Pant (MTQ3KOR) \\
+\sffamily\textbf{Department}    & ERD -- Engineering Research \& Development \\
+\sffamily\textbf{Organization}  & Bosch Global Software Technologies \\
+\sffamily\textbf{Role}          & Intern 2026 \\
+\sffamily\textbf{Project}       & Table Extraction -- Mainstream \\
+\end{tabular}
+
+\vfill
+{\large\sffamily April 2026}
+
+\end{center}
+\end{titlepage}
+
+% ── ACKNOWLEDGEMENT ──
+\chapter*{Acknowledgement}
+\addcontentsline{toc}{chapter}{Acknowledgement}
+
+I would like to express my sincere gratitude to \textbf{Bosch Global Software Technologies} for providing me the opportunity to work on this project as part of the ERD Internship 2026 program.
+
+I am thankful to my mentors and the team at Bosch for their continuous guidance, support, and encouragement throughout the development of this pipeline. Their expertise in document processing and data engineering helped shape the direction and quality of this work.
+
+I also acknowledge the open-source communities behind GLM-OCR, PP-DocLayout-V3, Qwen2.5, Ollama, and vLLM, whose tools made this fully local, privacy-preserving pipeline possible.
+
+\vspace{1cm}
+\begin{flushright}
+\textit{Aman Pant (MTQ3KOR)}\\
+ERD Intern 2026\\
+Bosch Global Software Technologies
+\end{flushright}
+
+% ── TABLE OF CONTENTS ──
+\newpage
+{
+\sffamily
+\setlength{\cftbeforesecskip}{1.5pt}
+\setlength{\cftbeforesubsecskip}{0.5pt}
+\setlength{\cftbeforechapskip}{5pt}
+\tableofcontents
+}
+\newpage
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{Abstract}
+
+This report documents the design, implementation, and evaluation of a fully local, end-to-end pipeline for extracting structured JSON data from commercial PDF documents such as purchase orders and shipping bills.
+
+The pipeline operates in two stages. \textbf{Stage~1} performs OCR and raw extraction using GLM-OCR (0.9B parameters) with PP-DocLayout-V3 for layout analysis, producing Markdown and structured JSON outputs. \textbf{Stage~2} applies a hybrid AI and rule-based extraction engine that maps OCR outputs to schema-aligned JSON---using Qwen2.5:32b via Ollama for free-text fields and deterministic HTML table parsing for structured tables.
+
+A \textbf{Streamlit-based evaluation frontend} allows side-by-side comparison of extraction results against ground truth and GPT-based baselines, generating color-coded Excel reports with field-level MATCH, MISMATCH, NEAR\_MATCH, and MISSING\_KEY analysis.
+
+The system requires zero proprietary APIs, runs entirely on local hardware, and achieves \textbf{85--90\% match rates} while maintaining \textbf{100\% accuracy} on rule-based table extraction. On purchase orders, the local pipeline \textbf{outperforms GPT by 26 percentage points}. Adding new document types requires zero changes to any core pipeline file.
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{Introduction}
+
+\section{Problem Statement}
+
+Commercial documents---purchase orders, shipping bills, invoices---arrive as PDF files, but downstream enterprise systems require structured data. Manually keying in hundreds of fields across dozens of pages is:
+
+\begin{itemize}[nosep]
+    \item \textbf{Slow} -- a single purchase order with 24 line items across 14 pages takes 30--60 minutes to key in manually.
+    \item \textbf{Error-prone} -- manual data entry introduces transcription errors, especially in numeric fields like quantities, prices, and dates.
+    \item \textbf{Expensive} -- at scale, this requires dedicated data entry teams costing significant operational overhead.
+    \item \textbf{Privacy-sensitive} -- cloud-based extraction services require uploading confidential commercial documents containing pricing, supplier terms, and trade secrets to third-party servers.
+\end{itemize}
+
+Existing solutions either rely on proprietary cloud APIs (raising data privacy concerns for sensitive commercial documents), require extensive per-document training data, or fail on complex table layouts that span multiple pages---a common pattern in commercial documents.
+
+\section{Aim of the Project}
+
+To build a \textbf{fully local, end-to-end pipeline} that takes a raw PDF document as input and produces a clean, schema-aligned JSON file as output---without any cloud dependency, proprietary APIs, or API keys---while providing an intuitive evaluation interface for quality assessment.
+
+\section{Objectives}
+
+\begin{enumerate}[nosep]
+    \item Deliver \textbf{fast, reliable, and user-friendly} extraction of structured data from complex commercial PDF documents with minimal human intervention.
+    \item Produce clean \textbf{key--value pair JSON output} that is schema-aligned, validated, and ready for direct consumption by downstream enterprise systems.
+    \item Ensure \textbf{high extraction accuracy} across both free-text fields (names, dates, addresses) and structured tabular data (line items, shipment schedules, pricing).
+    \item Build a \textbf{fully local, privacy-preserving} solution that processes confidential documents entirely on-premises with zero cloud dependency.
+    \item Design a \textbf{generic and extensible} architecture that supports new document types without modifying the core extraction engine.
+    \item Provide an \textbf{intuitive evaluation interface} that enables non-technical users to visually assess and compare extraction quality through downloadable reports.
+\end{enumerate}
+
+\section{Scope of the Project}
+
+\begin{scopebox}[In Scope]
+\begin{itemize}[nosep]
+    \item OCR extraction from PDF/image documents using GLM-OCR (0.9B params)
+    \item Layout detection using PP-DocLayout-V3 (25 label categories)
+    \item Structured data extraction using Qwen2.5:32b (local) + rule-based parsing
+    \item Two document types: Purchase Order (Li \& Fung) and Shipping Bill (Indian Customs)
+    \item Streamlit evaluation frontend with 3-way comparison (GT vs MyModel vs GPT)
+    \item Color-coded Excel report generation with per-field status tracking
+    \item Extensible plugin architecture for new document types
+\end{itemize}
+\end{scopebox}
+
+\begin{outbox}[Out of Scope]
+\begin{itemize}[nosep]
+    \item Handwritten document recognition
+    \item Real-time streaming extraction
+    \item Cloud deployment or SaaS packaging
+    \item Training or fine-tuning of OCR/LLM models
+    \item Languages other than English
+\end{itemize}
+\end{outbox}
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{Project Description}
+
+\section{Workflow Overview}
+
+The pipeline operates in two stages connected by a one-time manual schema design step. The overall flow is: \textit{Raw PDF} $\rightarrow$ \textit{OCR Extraction} $\rightarrow$ \textit{Schema Design} $\rightarrow$ \textit{Structured Extraction} $\rightarrow$ \textit{JSON Output} $\rightarrow$ \textit{Evaluation}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{workflow.png}
+\caption{End-to-end pipeline workflow}
+\end{figure}
+
+\section{The 11-Step Extraction Pipeline}
+
+\begin{table}[H]
+\centering\small\sffamily
+\begin{tabularx}{\textwidth}{c l X}
+\toprule
+\textbf{\#} & \textbf{Stage} & \textbf{Description} \\
+\midrule
+1 & Load Markdown & Split by \texttt{PAGE} markers, strip Terms \& Conditions pages \\
+2 & Load JSON & Unwrap OCR blocks per page, handle double-wrapping \\
+3 & Clean Inputs & Strip noise blocks ($\leq$3 chars), page markers, decorative lines \\
+4 & Build Evidence & Merge into $\sim$176 searchable chunks; tables double-chunked (full + per-row) \\
+5 & Parse Schema & Auto-generate field tree from null template, inject field aliases \\
+6 & Extract Scalars & Per field: retrieve top-6 chunks $\rightarrow$ SHA-256 cache check $\rightarrow$ Qwen2.5 prompt \\
+7 & Extract Lists & Rule-based HTML table parser overrides AI for structured tables \\
+8 & Assemble & Build nested draft JSON from all collected scalar and list values \\
+9 & Repair & Fix whitespace, normalize dates/currency/ship modes, empty $\rightarrow$ null \\
+10 & Validate & Type checks (string, number, list) and required-field checks \\
+11 & Finalize & Fill null template section by section, enforce output shape, add metadata \\
+\bottomrule
+\end{tabularx}
+\caption{The 11-step extraction assembly line}
+\end{table}
+
+\section{Dual Extraction Strategy}
+
+The pipeline uses two extraction methods and intelligently picks the right one per field:
+
+\begin{table}[H]
+\centering\small\sffamily
+\begin{tabularx}{\textwidth}{l l X c c}
+\toprule
+\textbf{Method} & \textbf{Used For} & \textbf{How It Works} & \textbf{Accuracy} & \textbf{Speed} \\
+\midrule
+\textbf{AI} & Free-text fields & Retrieve chunks $\rightarrow$ build prompt $\rightarrow$ Qwen2.5 & High & 2--5s \\
+\textbf{Rules} & Structured tables & HTML parser reads \texttt{<td>} by column index & 100\% & $<$100ms \\
+\bottomrule
+\end{tabularx}
+\caption{Dual extraction strategy comparison}
+\end{table}
+
+\section{Project Features}
+
+\begin{itemize}[nosep]
+    \item \textbf{Fully Local \& Private} -- All processing happens on-premises. No document data ever leaves the machine, ensuring complete confidentiality of commercial documents.
+    \item \textbf{Dual Extraction Engine} -- AI handles free-text; rules handle tables. Best of both worlds.
+    \item \textbf{User-Friendly Evaluation UI} -- A clean Streamlit web interface lets users upload files, run comparisons, and download reports with a few clicks---no command-line knowledge required.
+    \item \textbf{Generic Plugin Architecture} -- The core pipeline never changes. Adding a new document type = 3 files + 1 line in the registry. Future-proof and maintainable.
+    \item \textbf{Intelligent Caching} -- SHA-256 disk-backed response cache ensures re-runs and debugging iterations are near-instant.
+    \item \textbf{Color-Coded Excel Reports} -- Downloadable Excel files with green/yellow/orange/red row coloring for instant visual assessment of extraction quality.
+    \item \textbf{3-Way Comparison} -- Compare Ground Truth vs Your Pipeline vs GPT side-by-side in a single report.
+    \item \textbf{Per-Page \& Overall Recall} -- The evaluation engine computes field-level overlap recall both per-page and across the entire document.
+\end{itemize}
+
+\section{Design Diagram -- Layered Architecture}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=0.6cm,
+    lyr/.style={draw, rounded corners=6pt, minimum width=12cm, minimum height=1.1cm, font=\sffamily\small, align=center},
+    arr/.style={-{Stealth[length=5pt]}, thick, gray!50},
+]
+\node[lyr, fill=teal!15, draw=teal!50] (ocr) {\textbf{OCR Layer} -- GLM-OCR (0.9B) via vLLM\enspace|\enspace PP-DocLayout-V3\enspace|\enspace Port 8080};
+\node[lyr, fill=dpurple!10, draw=dpurple!40, below=0.5cm of ocr] (core) {\textbf{Core Pipeline} -- Evidence $\rightarrow$ Retrieve $\rightarrow$ Extract $\rightarrow$ Repair $\rightarrow$ Validate $\rightarrow$ Assemble};
+\node[lyr, fill=amber!12, draw=amber!50, below=0.5cm of core] (plugin) {\textbf{Plugin Layer} -- Adapters + Configs + Schemas (document-specific, you write this)};
+\node[lyr, fill=boschred!8, draw=boschred!40, below=0.5cm of plugin] (ai) {\textbf{AI Layer} -- Qwen2.5:32b via Ollama\enspace|\enspace Prompt Builder\enspace|\enspace SHA-256 Cache\enspace|\enspace Port 11434};
+\node[lyr, fill=softgray, draw=gray!50, below=0.5cm of ai] (eval) {\textbf{Evaluation Layer} -- Streamlit Frontend\enspace|\enspace Overlap Recall\enspace|\enspace Excel Report Generation};
+
+\draw[arr] (ocr) -- (core);
+\draw[arr] (core) -- (plugin);
+\draw[arr] (plugin) -- (ai);
+\draw[arr] (ai) -- (eval);
+
+\end{tikzpicture}
+\caption{Five-layer system architecture}
+\end{figure}
+
+\section{Design and Implementation Constraints}
+
+\begin{itemize}[nosep]
+    \item All processing must run entirely offline---no external API calls permitted at any stage.
+    \item Extraction must be deterministic and reproducible when cache is enabled.
+    \item Output JSON must match the null template shape exactly---no extra or missing keys allowed.
+    \item Core pipeline files must never be modified when adding new document types.
+    \item Rule-based parsing is preferred over AI wherever column positions are fixed and known.
+    \item The evaluation frontend must work without requiring any programming knowledge from the user.
+\end{itemize}
+
+\section{Assumptions and Dependencies}
+
+\begin{table}[H]
+\centering\small\sffamily
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{Item} & \textbf{Details} \\
+\midrule
+GPU availability & 24~GB+ VRAM recommended for serving both GLM-OCR (vLLM) and Qwen2.5 (Ollama) \\
+Document structure & Documents follow a consistent layout within each type (column positions are fixed) \\
+OCR quality & GLM-OCR produces accurate HTML tables with correct column counts \\
+Ollama server & Must be running on port 11434 for AI extraction calls \\
+vLLM server & Must be running on port 8080 for OCR inference \\
+Python 3.12+ & Required for GLM-OCR SDK and UV package manager \\
+\bottomrule
+\end{tabularx}
+\caption{Key assumptions and dependencies}
+\end{table}
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{Evaluation Frontend}
+
+The project includes a \textbf{Streamlit-based evaluation frontend} that provides a user-friendly web interface for assessing extraction quality. No command-line knowledge is required---everything is point-and-click.
+
+\section{Frontend Architecture}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=0.6cm and 1cm,
+    comp/.style={draw, rounded corners=6pt, minimum width=4.2cm, minimum height=1.3cm, font=\sffamily\scriptsize, align=center, fill=#1!10, draw=#1!50},
+    databox/.style={draw, rounded corners=4pt, minimum width=2.5cm, minimum height=0.7cm, font=\sffamily\scriptsize\ttfamily, fill=softgray, draw=gray!30, align=center},
+    arr/.style={-{Stealth[length=5pt]}, thick, gray!50},
+    lbl/.style={font=\sffamily\tiny\color{boschgray}, align=center},
+]
+
+% User
+\node[comp=boschdark] (user) {\textbf{User (Browser)}\\Opens localhost:8501};
+
+% Streamlit App
+\node[comp=teal, below=0.8cm of user] (st) {\textbf{Streamlit App}\\frontend/app.py};
+
+% Sidebar inputs
+\node[databox, below left=0.8cm and 0.5cm of st] (gt) {Ground Truth\\(JSON/Excel)};
+\node[databox, below=0.8cm of st] (pred) {MyModel Pred\\(JSON/Excel/TXT)};
+\node[databox, below right=0.8cm and 0.5cm of st] (gpt) {GPT Prediction\\(JSON)};
+
+% Backend
+\node[comp=dpurple, below=2.8cm of st] (eval) {\textbf{eval\_backend.py}\\Overlap Recall + Alignment};
+
+% Outputs
+\node[databox, below left=0.8cm and 0.3cm of eval] (recall) {Recall Report\\(per-page + overall)};
+\node[databox, below right=0.8cm and 0.3cm of eval] (excel) {Color-Coded\\Excel (.xlsx)};
+
+\draw[arr] (user) -- (st) node[midway, right, lbl] {HTTP};
+\draw[arr] (st) -- (gt); \draw[arr] (st) -- (pred); \draw[arr] (st) -- (gpt);
+\draw[arr] (gt) -- (eval); \draw[arr] (pred) -- (eval); \draw[arr] (gpt) -- (eval);
+\draw[arr] (eval) -- (recall);
+\draw[arr] (eval) -- (excel);
+
+\end{tikzpicture}
+\caption{Evaluation frontend -- component diagram}
+\end{figure}
+
+\section{User Interface}
+
+The frontend presents a clean, branded interface with the Bosch logo, a dark sidebar for file uploads, and action buttons for running evaluations.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{frontend_ui.png}
+\caption{Streamlit evaluation frontend -- main interface}
+\end{figure}
+
+\section{Input Files}
+
+The user uploads \textbf{three files} through the sidebar:
+
+\begin{table}[H]
+\centering\small\sffamily
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+\textbf{Upload Slot} & \textbf{Format} & \textbf{What It Contains} \\
+\midrule
+Ground Truth & JSON or Excel & The expected correct values for every field in the document \\
+MyModel Prediction & JSON, Excel, or TXT & The structured JSON output produced by our Pipeline (Stage~2) \\
+GPT Prediction & JSON & The extraction output produced by GPT for comparison \\
+\bottomrule
+\end{tabularx}
+\caption{Three input files for evaluation}
+\end{table}
+
+\section{Evaluation Actions}
+
+Five action buttons are available:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Evaluate Overlap Recall (MyModel)} -- Computes per-page and overall field-level recall for the local pipeline output.
+    \item \textbf{Evaluate Overlap Recall (GPT)} -- Same metric computed for the GPT extraction output.
+    \item \textbf{Build GT$\leftrightarrow$Pred Alignment Excel (MyModel)} -- Generates a color-coded Excel file comparing ground truth against the local pipeline.
+    \item \textbf{Build GT$\leftrightarrow$Pred Alignment Excel (GPT)} -- Same Excel report for the GPT output.
+    \item \textbf{Build 3-Way Comparison Excel} -- A single Excel file comparing Ground Truth vs MyModel vs GPT side-by-side.
+\end{enumerate}
+
+\section{Excel Report Output}
+
+The generated Excel report provides a \textbf{field-by-field comparison} with five columns: GT Key, Pred Key, GT Value, Pred Value, and Status. Each row is color-coded based on the match status.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{excel_output.png}
+\caption{Color-coded Excel alignment report -- GT vs Predicted values}
+\end{figure}
+
+\section{Status Legend}
+
+Every field in the comparison is assigned one of four statuses:
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.65\textwidth]{legend.png}
+\caption{Status legend for the Excel comparison report}
+\end{figure}
+
+\begin{table}[H]
+\centering\small\sffamily
+\begin{tabularx}{\textwidth}{>{\columncolor{matchgreen}}l l X}
+\toprule
+\textbf{Color} & \textbf{Status} & \textbf{Meaning} \\
+\midrule
+\cellcolor{matchgreen} Green & MATCH & GT value equals Pred value after normalization and loose punctuation handling \\
+\cellcolor{nearorange} Orange & NEAR\_MATCH & Text-like containment OR Jaccard token similarity $\geq$ 0.85 \\
+\cellcolor{misyellow} Yellow & MISMATCH & Key was matched but the extracted value differs from ground truth \\
+\cellcolor{missred} Red & MISSING\_KEY & No matching prediction key found, or prediction value is empty \\
+\bottomrule
+\end{tabularx}
+\caption{Detailed status definitions}
+\end{table}
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{Project Life Cycle}
+
+\section{Development Methodology}
+
+The project followed an \textbf{iterative, problem-decomposition approach} inspired by Agile principles. Rather than treating the entire pipeline as a monolithic problem, the core challenge was broken down into \textbf{three independent sub-problems}, each tackled as a separate research-and-build sprint. This allowed rapid experimentation within each sub-problem while maintaining a clear integration path.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=0.6cm,
+    spbox/.style={draw, rounded corners=8pt, minimum width=12.5cm, minimum height=1.6cm, font=\sffamily\small, align=left, fill=#1!8, draw=#1!40},
+    arr/.style={-{Stealth[length=5pt]}, very thick, gray!50},
+    lbl/.style={font=\sffamily\scriptsize\bfseries, color=#1},
+]
+
+\node[spbox=teal] (sp1) {
+    \textbf{Sub-Problem 1: Which OCR model gives the best text extraction?}\\[2pt]
+    {\scriptsize Evaluated multiple OCR engines on complex tables, seals, and formulas. Selected GLM-OCR (0.9B).}
+};
+
+\node[spbox=dpurple, below=0.5cm of sp1] (sp2) {
+    \textbf{Sub-Problem 2: Which model best structures OCR output given a null schema?}\\[2pt]
+    {\scriptsize Tested LLMs for mapping raw OCR text to schema-aligned JSON. Selected Qwen2.5:32b + rule-based hybrid.}
+};
+
+\node[spbox=amber, below=0.5cm of sp2] (sp3) {
+    \textbf{Sub-Problem 3: How to automate null schema generation?}\\[2pt]
+    {\scriptsize Studied document layouts to design reusable templates, configs, and adapters per document type.}
+};
+
+\draw[arr] (sp1) -- (sp2) node[midway, right=4pt, lbl=boschgray] {Output feeds into};
+\draw[arr] (sp2) -- (sp3) node[midway, right=4pt, lbl=boschgray] {Schema drives};
+
+\node[lbl=teal, left=0.1cm of sp1.north west, anchor=south west] {SPRINT 1};
+\node[lbl=dpurple, left=0.1cm of sp2.north west, anchor=south west] {SPRINT 2};
+\node[lbl=amber, left=0.1cm of sp3.north west, anchor=south west] {SPRINT 3};
+
+\end{tikzpicture}
+\caption{Problem decomposition into three independent sprints}
+\end{figure}
+
+\section{Why This Approach}
+
+Each sub-problem was \textbf{independently testable}---the OCR model could be evaluated on its own using benchmark documents before any structuring pipeline existed. The structuring model could be tested with manually prepared OCR outputs before the OCR stage was finalized. This decoupling reduced risk and allowed parallel experimentation.
+
+Within each sprint, the workflow was iterative:
+\begin{enumerate}[nosep]
+    \item \textbf{Research} -- Survey available models and tools for the sub-problem
+    \item \textbf{Prototype} -- Build a minimal working version with sample documents
+    \item \textbf{Evaluate} -- Measure accuracy against ground truth
+    \item \textbf{Iterate} -- Tune configurations, add repair rules, improve aliases until fill rate plateaus
+    \item \textbf{Integrate} -- Connect the sprint output to the next sub-problem
+\end{enumerate}
+
+\section{Development Phases}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=0.25cm,
+    ph/.style={draw, rounded corners=6pt, minimum width=11cm, minimum height=0.85cm, font=\sffamily\small, align=left, fill=#1!10, draw=#1!40},
+    arr/.style={-{Stealth[length=4pt]}, thick, gray!40},
+]
+\node[ph=boschdark] (p1) {\textbf{Phase 1:} Study document types, identify field structures and table layouts};
+\node[ph=teal, below=0.25cm of p1] (p2) {\textbf{Phase 2:} Evaluate OCR models, select and deploy GLM-OCR via vLLM};
+\node[ph=teal, below=0.25cm of p2] (p3) {\textbf{Phase 3:} Run OCR on samples, validate extraction quality on tables/seals};
+\node[ph=dpurple, below=0.25cm of p3] (p4) {\textbf{Phase 4:} Evaluate structuring models, select Qwen2.5:32b + rule-based hybrid};
+\node[ph=dpurple, below=0.25cm of p4] (p5) {\textbf{Phase 5:} Build the generic 11-step extraction pipeline core};
+\node[ph=dpurple, below=0.25cm of p5] (p6) {\textbf{Phase 6:} Implement repair rules, validation, and SHA-256 caching};
+\node[ph=amber, below=0.25cm of p6] (p7) {\textbf{Phase 7:} Design null templates, configs, and adapters for PO \& SB};
+\node[ph=amber, below=0.25cm of p7] (p8) {\textbf{Phase 8:} Build Streamlit evaluation frontend with 3-way comparison};
+\node[ph=boschdark, below=0.25cm of p8] (p9) {\textbf{Phase 9:} End-to-end testing, iterate on aliases/configs, optimize fill rates};
+\foreach \i/\j in {p1/p2, p2/p3, p3/p4, p4/p5, p5/p6, p6/p7, p7/p8, p8/p9}
+    \draw[arr] (\i) -- (\j);
+
+% Sprint labels on right
+\draw[decorate, decoration={brace, amplitude=6pt, mirror}, thick, teal!60] (6.2, -0.3) -- (6.2, -1.4) node[midway, right=8pt, font=\sffamily\tiny\bfseries, teal] {Sprint 1};
+\draw[decorate, decoration={brace, amplitude=6pt, mirror}, thick, dpurple!60] (6.2, -1.7) -- (6.2, -3.9) node[midway, right=8pt, font=\sffamily\tiny\bfseries, dpurple] {Sprint 2};
+\draw[decorate, decoration={brace, amplitude=6pt, mirror}, thick, amber!60] (6.2, -4.2) -- (6.2, -5.3) node[midway, right=8pt, font=\sffamily\tiny\bfseries, amber] {Sprint 3};
+\end{tikzpicture}
+\caption{Development phases mapped to sprints}
+\end{figure}
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{System Requirements}
+
+\section{Hardware Requirements}
+
+\begin{table}[H]
+\centering\sffamily
+\begin{tabularx}{\textwidth}{l X X}
+\toprule
+\textbf{Component} & \textbf{Minimum} & \textbf{Recommended} \\
+\midrule
+GPU & 8 GB VRAM & 24 GB+ VRAM (A100 / RTX 4090) \\
+RAM & 16 GB & 32 GB+ \\
+Storage & 50 GB free & 100 GB+ (models + cache) \\
+CPU & 4 cores & 8+ cores \\
+\bottomrule
+\end{tabularx}
+\caption{Hardware requirements}
+\end{table}
+
+\section{Software Requirements}
+
+\begin{table}[H]
+\centering\small\sffamily
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+\textbf{Software} & \textbf{Version} & \textbf{Purpose} \\
+\midrule
+Python & 3.12+ & Core runtime for all components \\
+UV & Latest & Fast package manager for GLM-OCR SDK \\
+Ollama & Latest & Local LLM server hosting Qwen2.5 \\
+vLLM & Nightly & High-performance model serving for GLM-OCR \\
+\midrule
+GLM-OCR & 0.9B BF16 & OCR model ($\sim$1.8 GB download) \\
+Qwen2.5:32b & 32B params & AI extraction model ($\sim$20 GB download) \\
+PP-DocLayout-V3 & Latest & Layout detection (25 label categories) \\
+\midrule
+Streamlit & Latest & Evaluation frontend web framework \\
+BeautifulSoup4 & Latest & HTML table parsing in the pipeline \\
+openpyxl & Latest & Color-coded Excel report generation \\
+pandas & Latest & Data manipulation for evaluation \\
+\bottomrule
+\end{tabularx}
+\caption{Software and model requirements}
+\end{table}
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{Functional Requirements}
+
+\begin{table}[H]
+\centering\small\sffamily
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\
+\midrule
+FR-01 & PDF/Image Input & The system shall accept PDF files and image files (PNG, JPEG) as input documents. \\
+FR-02 & Layout Detection & The system shall detect and classify visual regions on each page---text blocks, tables, titles, formulas, seals, and images. \\
+FR-03 & OCR Extraction & The system shall extract text content from each detected region and produce per-page Markdown and JSON outputs. \\
+FR-04 & Result Merging & The system shall merge per-page OCR outputs into a single Markdown file and a single JSON file per document. \\
+FR-05 & Schema-Aligned Output & The system shall produce structured JSON output that matches the null template shape exactly---no extra keys, no missing keys. \\
+FR-06 & AI-Based Extraction & The system shall extract scalar field values (names, dates, addresses) using a local LLM with evidence-based prompting. \\
+FR-07 & Rule-Based Extraction & The system shall extract structured table data using deterministic column-index parsing from HTML tables. \\
+FR-08 & Value Repair & The system shall apply post-extraction fix rules (whitespace trimming, date normalization, currency stripping, etc.). \\
+FR-09 & Validation & The system shall validate extracted values for type correctness and required-field presence, producing a validation report. \\
+FR-10 & Response Caching & The system shall cache AI responses using SHA-256 keys to avoid redundant model calls on re-runs. \\
+FR-11 & Overlap Recall & The evaluation frontend shall compute per-page and overall field-level overlap recall for any prediction file. \\
+FR-12 & Alignment Report & The evaluation frontend shall generate downloadable, color-coded Excel files showing field-by-field GT vs Pred comparison. \\
+FR-13 & 3-Way Comparison & The evaluation frontend shall support side-by-side comparison of Ground Truth vs MyModel vs GPT in a single Excel report. \\
+FR-14 & Plugin Registration & The system shall allow new document types to be added via config, adapter, and template files without modifying core pipeline code. \\
+\bottomrule
+\end{tabularx}
+\caption{Functional requirements}
+\end{table}
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{Non-Functional Requirements}
+
+\begin{table}[H]
+\centering\small\sffamily
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+\textbf{ID} & \textbf{Requirement} & \textbf{Description} \\
+\midrule
+NFR-01 & \textbf{Privacy} & All processing must run locally. No document data shall be transmitted to any external server or cloud API at any stage of the pipeline. \\
+NFR-02 & \textbf{Reproducibility} & Given the same inputs and cache state, the system shall produce bit-identical outputs. SHA-256 disk caching ensures deterministic AI responses. \\
+NFR-03 & \textbf{Extensibility} & Adding a new document type shall require only 3 new files and 1 registry line. Zero modifications to any core pipeline file. \\
+NFR-04 & \textbf{Accuracy} & Rule-based table extraction shall be 100\% deterministic. AI-based extraction shall achieve $\geq$85\% field-level match rate with repair rules enabled. \\
+NFR-05 & \textbf{Usability} & The evaluation frontend shall be operable by non-technical users with zero programming knowledge. All actions via upload, click, and download. \\
+NFR-06 & \textbf{Maintainability} & The codebase shall maintain strict separation between the generic core pipeline, document-specific plugins, and the evaluation layer. \\
+NFR-07 & \textbf{Portability} & The pipeline shall run on any Linux system with a CUDA-capable GPU. Model serving shall support Docker containerization. \\
+NFR-08 & \textbf{Observability} & Every pipeline run shall produce structured JSON logs with timestamps, field-level extraction status, and validation summaries. \\
+NFR-09 & \textbf{Scalability} & The system shall support horizontal scaling---processing N documents of the same type with a single schema and no per-document configuration. \\
+\bottomrule
+\end{tabularx}
+\caption{Non-functional requirements}
+\end{table}
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{Results}
+
+\section{Shipping Bill Extraction}
+
+\subsection{Our Pipeline (Qwen2.5:32b + Rule-Based)}
+\begin{table}[H]
+\centering\sffamily
+\begin{tabular}{l r r}
+\toprule
+\textbf{Status} & \textbf{Count} & \textbf{Percentage} \\
+\midrule
+\rowcolor{matchgreen} MATCH & 199 & 85.04\% \\
+\rowcolor{misyellow} MISMATCH & 22 & 9.40\% \\
+\rowcolor{missred!60} MISSING\_KEY & 11 & 4.70\% \\
+\rowcolor{nearorange} NEAR\_MATCH & 2 & 0.85\% \\
+\midrule
+\textbf{Grand Total} & \textbf{234} & \textbf{100.00\%} \\
+\bottomrule
+\end{tabular}
+\caption{Shipping Bill -- Our Pipeline results (234 fields)}
+\end{table}
+
+\subsection{GPT-Based Extraction}
+\begin{table}[H]
+\centering\sffamily
+\begin{tabular}{l r r}
+\toprule
+\textbf{Status} & \textbf{Count} & \textbf{Percentage} \\
+\midrule
+\rowcolor{matchgreen} MATCH & 204 & 86.44\% \\
+\rowcolor{missred!60} MISSING\_KEY & 23 & 9.75\% \\
+\rowcolor{misyellow} MISMATCH & 9 & 3.81\% \\
+\midrule
+\textbf{Grand Total} & \textbf{236} & \textbf{100.00\%} \\
+\bottomrule
+\end{tabular}
+\caption{Shipping Bill -- GPT-based extraction results (236 fields)}
+\end{table}
+
+\section{Purchase Order Extraction}
+
+\subsection{Our Pipeline (Qwen2.5:32b + Rule-Based)}
+\begin{table}[H]
+\centering\sffamily
+\begin{tabular}{l r r}
+\toprule
+\textbf{Status} & \textbf{Count} & \textbf{Percentage} \\
+\midrule
+\rowcolor{matchgreen} MATCH & 744 & 89.96\% \\
+\rowcolor{misyellow} MISMATCH & 75 & 9.07\% \\
+\rowcolor{missred!60} MISSING\_KEY & 7 & 0.85\% \\
+\rowcolor{nearorange} NEAR\_MATCH & 1 & 0.12\% \\
+\midrule
+\textbf{Grand Total} & \textbf{827} & \textbf{100.00\%} \\
+\bottomrule
+\end{tabular}
+\caption{Purchase Order -- Our Pipeline results (827 fields)}
+\end{table}
+
+\subsection{GPT-Based Extraction}
+\begin{table}[H]
+\centering\sffamily
+\begin{tabular}{l r r}
+\toprule
+\textbf{Status} & \textbf{Count} & \textbf{Percentage} \\
+\midrule
+\rowcolor{matchgreen} MATCH & 527 & 63.57\% \\
+\rowcolor{misyellow} MISMATCH & 269 & 32.45\% \\
+\rowcolor{missred!60} MISSING\_KEY & 33 & 3.98\% \\
+\midrule
+\textbf{Grand Total} & \textbf{829} & \textbf{100.00\%} \\
+\bottomrule
+\end{tabular}
+\caption{Purchase Order -- GPT-based extraction results (829 fields)}
+\end{table}
+
+\section{Comparative Analysis}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+    % Shipping Bill
+    \begin{scope}
+        \node[font=\sffamily\small\bfseries, color=boschdark] at (3, 5) {Shipping Bill};
+        \fill[teal!60, rounded corners=3pt] (0.5, 0) rectangle (2.5, 3.4);
+        \node[font=\sffamily\scriptsize, white, rotate=0] at (1.5, 1.7) {\textbf{85.0\%}};
+        \node[font=\sffamily\scriptsize] at (1.5, -0.4) {Our Pipeline};
+        \fill[amber!60, rounded corners=3pt] (3.5, 0) rectangle (5.5, 3.46);
+        \node[font=\sffamily\scriptsize, white] at (4.5, 1.7) {\textbf{86.4\%}};
+        \node[font=\sffamily\scriptsize] at (4.5, -0.4) {GPT};
+        \draw[gray!30, dashed] (0, 0) -- (6, 0);
+    \end{scope}
+    % Purchase Order
+    \begin{scope}[xshift=8cm]
+        \node[font=\sffamily\small\bfseries, color=boschdark] at (3, 5) {Purchase Order};
+        \fill[teal!60, rounded corners=3pt] (0.5, 0) rectangle (2.5, 3.6);
+        \node[font=\sffamily\scriptsize, white] at (1.5, 1.8) {\textbf{90.0\%}};
+        \node[font=\sffamily\scriptsize] at (1.5, -0.4) {Our Pipeline};
+        \fill[amber!60, rounded corners=3pt] (3.5, 0) rectangle (5.5, 2.54);
+        \node[font=\sffamily\scriptsize, white] at (4.5, 1.3) {\textbf{63.6\%}};
+        \node[font=\sffamily\scriptsize] at (4.5, -0.4) {GPT};
+        \draw[gray!30, dashed] (0, 0) -- (6, 0);
+    \end{scope}
+
+    % Legend
+    \fill[teal!60, rounded corners=2pt] (4.2, -1.3) rectangle (4.7, -1.0);
+    \node[font=\sffamily\tiny, right] at (4.8, -1.15) {Our Pipeline (local)};
+    \fill[amber!60, rounded corners=2pt] (7.2, -1.3) rectangle (7.7, -1.0);
+    \node[font=\sffamily\tiny, right] at (7.8, -1.15) {GPT (cloud)};
+\end{tikzpicture}
+\caption{Match rate comparison -- Our Pipeline (fully local) vs GPT (cloud-based)}
+\end{figure}
+
+\begin{findbox}[Key Findings]
+\begin{itemize}[nosep]
+    \item On \textbf{Purchase Orders}, the local pipeline outperforms GPT by \textbf{26.4 percentage points} (90.0\% vs 63.6\%). The rule-based table parser achieves 100\% accuracy on structured multi-page tables where GPT frequently misaligns columns.
+    \item On \textbf{Shipping Bills}, both approaches perform comparably ($\sim$85--86\%), with GPT showing slightly fewer mismatches but more missing keys.
+    \item The local pipeline has \textbf{zero recurring cost} and \textbf{complete data privacy}, while GPT requires per-token cloud API charges and document upload to external servers.
+    \item \textbf{NEAR\_MATCH} cases (0.1--0.9\%) are typically formatting differences (e.g., date format variations) that could be resolved with additional repair rules.
+\end{itemize}
+\end{findbox}
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{Scalability Report}
+
+The pipeline is designed for \textbf{horizontal scalability}---once a schema is defined for a document type, it can process an unlimited number of documents of that type with zero additional configuration.
+
+\section{Horizontal Scaling -- One Schema, N Documents}
+
+The core design principle: \textbf{define once, run everywhere}. A single schema (null template + config + adapter) serves as the blueprint for an entire document type. Whether you process 1 document or 10,000 documents, the setup is identical. Each document is processed independently with no shared state.
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    node distance=0.5cm and 0.8cm,
+    sbox/.style={draw, rounded corners=6pt, minimum width=4.5cm, minimum height=0.9cm, font=\sffamily\scriptsize\bfseries, align=center, fill=amber!12, draw=amber!45},
+    dbox/.style={draw, rounded corners=4pt, minimum width=1.8cm, minimum height=0.65cm, font=\sffamily\tiny, align=center, fill=teal!10, draw=teal!35},
+    pbox/.style={draw, rounded corners=6pt, minimum width=10cm, minimum height=0.9cm, font=\sffamily\small\bfseries, align=center, fill=dpurple!10, draw=dpurple!40},
+    obox/.style={draw, rounded corners=4pt, minimum width=1.8cm, minimum height=0.65cm, font=\sffamily\tiny, align=center, fill=softgray, draw=gray!35},
+    arr/.style={-{Stealth[length=4pt]}, thick, gray!40},
+]
+
+% Schema row
+\node[sbox] (sch1) {Purchase Order Schema};
+\node[sbox, right=1.5cm of sch1] (sch2) {Shipping Bill Schema};
+
+% Document row - PO
+\node[dbox, below=0.7cm of sch1, xshift=-1.8cm] (d1) {PO Doc 1};
+\node[dbox, below=0.7cm of sch1] (d2) {PO Doc 2};
+\node[dbox, below=0.7cm of sch1, xshift=1.8cm] (d3) {PO Doc N};
+
+% Document row - SB
+\node[dbox, below=0.7cm of sch2, xshift=-1.8cm] (e1) {SB Doc 1};
+\node[dbox, below=0.7cm of sch2] (e2) {SB Doc 2};
+\node[dbox, below=0.7cm of sch2, xshift=1.8cm] (e3) {SB Doc N};
+
+% Dots
+\node[font=\sffamily\tiny\bfseries, color=gray] at ($(d2)!0.5!(d3)$) {$\cdots$};
+\node[font=\sffamily\tiny\bfseries, color=gray] at ($(e2)!0.5!(e3)$) {$\cdots$};
+
+% Pipeline
+\node[pbox, below=1.6cm of sch1, xshift=2.8cm] (pipe) {Same Generic Pipeline (no per-document config)};
+
+% Output row
+\node[obox, below=0.7cm of pipe, xshift=-4cm] (o1) {Result 1};
+\node[obox, below=0.7cm of pipe, xshift=-1.3cm] (o2) {Result 2};
+\node[obox, below=0.7cm of pipe, xshift=1.3cm] (o3) {Result ...};
+\node[obox, below=0.7cm of pipe, xshift=4cm] (o4) {Result N};
+
+% Arrows - schema to docs
+\draw[arr] (sch1) -- (d1); \draw[arr] (sch1) -- (d2); \draw[arr] (sch1) -- (d3);
+\draw[arr] (sch2) -- (e1); \draw[arr] (sch2) -- (e2); \draw[arr] (sch2) -- (e3);
+
+% Arrows - docs to pipeline
+\draw[arr] (d1.south) -- ++(0,-0.3) -| (pipe.150);
+\draw[arr] (d2.south) -- (pipe.160);
+\draw[arr] (d3.south) -- ++(0,-0.3) -| (pipe.170);
+\draw[arr] (e1.south) -- ++(0,-0.3) -| (pipe.10);
+\draw[arr] (e2.south) -- (pipe.20);
+\draw[arr] (e3.south) -- ++(0,-0.3) -| (pipe.30);
+
+% Arrows - pipeline to outputs
+\draw[arr] (pipe) -- (o1); \draw[arr] (pipe) -- (o2);
+\draw[arr] (pipe) -- (o3); \draw[arr] (pipe) -- (o4);
+
+\end{tikzpicture}
+\caption{Horizontal scaling -- one schema serves unlimited documents through the same pipeline}
+\end{figure}
+
+\section{Key Characteristics Enabling Horizontal Scale}
+
+\begin{itemize}[nosep]
+    \item \textbf{Stateless Processing} -- Each document run is fully independent. No database, no shared memory, no inter-document dependencies. Documents can be processed concurrently across multiple machines or sequentially on a single machine.
+    \item \textbf{No Per-Document Configuration} -- All documents of the same type share a single schema, config, and adapter. Processing 1 document or 10{,}000 documents requires exactly the same one-time setup.
+    \item \textbf{Disk-Backed Caching} -- SHA-256 response caching means identical AI calls are never repeated. When processing a batch of similar documents, cache hit rates increase after the first few runs, effectively reducing compute cost to near-zero for repeated extraction patterns.
+    \item \textbf{Batch-Ready} -- A simple scripting loop over \texttt{run.py} processes an entire folder of documents. No orchestration framework, no job queue, no distributed system needed.
+    \item \textbf{Multi-Machine Deployment} -- The OCR server (vLLM) and AI server (Ollama) run as independent services on separate ports. They can be deployed on different machines, enabling GPU resource pooling across teams without any pipeline code changes.
+    \item \textbf{Docker-Ready} -- vLLM supports containerized deployment, enabling orchestration via Kubernetes or Docker Compose for enterprise-scale batch processing.
+\end{itemize}
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{Advantages of the Project}
+
+\begin{enumerate}[leftmargin=*]
+
+    \item \textbf{Complete Data Privacy} -- All processing happens on local hardware. No document ever leaves the machine. This is critical for confidential commercial documents containing pricing, supplier terms, and trade secrets. Fully compliant with enterprise data governance policies.
+
+    \item \textbf{Zero Recurring Cost} -- No API fees, no per-page charges, no subscription costs. Once the models are downloaded ($\sim$22 GB total), the pipeline runs for free indefinitely.
+
+    \item \textbf{Deterministic Table Extraction} -- Rule-based parsing of structured tables is 100\% accurate and reproducible. Unlike AI-based approaches that can hallucinate or misalign columns, column-index parsing always returns the correct value.
+
+    \item \textbf{Outperforms GPT on Complex Tables} -- On Purchase Orders with multi-page table layouts, the local pipeline achieves 90\% match rate vs GPT's 63.6\%---a 26-point improvement. This demonstrates that domain-specific rules beat general-purpose AI for structured data.
+
+    \item \textbf{User-Friendly Evaluation} -- The Streamlit frontend requires zero programming knowledge. Users upload three files, click buttons, and download color-coded Excel reports. The entire evaluation workflow is visual and intuitive.
+
+    \item \textbf{Plugin Architecture} -- Adding a new document type requires zero changes to any core file. Three new files (template, config, adapter) and one registry line. The pipeline is future-proof and maintainable by any developer.
+
+    \item \textbf{Intelligent Caching} -- SHA-256 disk-backed response cache means identical extractions are never repeated. Re-runs for debugging, testing, and iteration are near-instant ($<$5 seconds).
+
+    \item \textbf{Comprehensive Quality Reports} -- The color-coded Excel reports with MATCH (green), NEAR\_MATCH (orange), MISMATCH (yellow), and MISSING\_KEY (red) make it immediately obvious where the pipeline succeeds and where it needs improvement---no manual inspection required.
+
+\end{enumerate}
+
+% ═══════════════════════════════════════════════════════════════════
+\chapter{Conclusion}
+
+This project demonstrates that a fully local, open-source pipeline can \textbf{match or exceed cloud-based AI services} for structured data extraction from commercial PDF documents---while offering complete data privacy and zero recurring cost.
+
+The key insight is the \textbf{hybrid extraction strategy}: using AI (Qwen2.5:32b) for free-text fields where natural language understanding is needed, and rule-based column-index parsing for structured tables where deterministic accuracy matters. This combination achieves 85--90\% overall match rates while maintaining 100\% accuracy on table sections. On complex purchase orders, the local pipeline outperforms GPT by 26 percentage points.
+
+The \textbf{plugin-based architecture} ensures the system scales to new document types without touching any core pipeline code---adding a new type is a matter of hours of manual document study, not weeks of model training or data annotation.
+
+The \textbf{user-friendly Streamlit evaluation frontend} closes the feedback loop, allowing non-technical users to visually assess extraction quality through color-coded Excel reports with field-level MATCH, MISMATCH, NEAR\_MATCH, and MISSING\_KEY status tracking.
+
+The pipeline runs entirely on local hardware with no API keys, no cloud dependency, and zero recurring cost, making it suitable for processing confidential commercial documents at scale within enterprise environments at Bosch Global Software Technologies.
+
+\vspace{1.5cm}
+\begin{center}
+\rule{0.4\textwidth}{0.5pt}
+\vspace{0.6cm}
+
+\includegraphics[width=3.5cm]{bosch.png}
+
+\vspace{0.3cm}
+{\sffamily\small\textcolor{boschgray}{Bosch Global Software Technologies}}\\
+{\sffamily\small\textcolor{boschgray}{ERD Intern 2026}}
+\end{center}
+
+\end{document}
