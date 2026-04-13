@@ -3,8 +3,13 @@
 <!-- <img src="../Md_JSON_Extraction/frontend/assets/bosch.png" alt="Bosch Logo" width="200"/> -->
 # Full Pipeline(Stage 2)
 **Runs the full end to end pipeline to extracted structured JSON**
-> **This is Stage 2 of the pipeline.** Complete [Stage 1 (Md & JSON Extraction)](../Md_JSON_Extraction/README.md) first to get your OCR outputs.
 </div>
+
+---
+> **This is Stage 2 of the pipeline.** Complete [Stage 1 (Md & JSON Extraction)](../Md_JSON_Extraction/README.md) first to get your OCR outputs.
+
+---
+
 
 
 
