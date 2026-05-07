@@ -441,4 +441,3 @@ Repeat until fill rate is acceptable (aim for >80%)
 □ finalize() — all template sections filled, correct priority order
 ```
 
-

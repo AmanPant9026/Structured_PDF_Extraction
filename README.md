@@ -1,6 +1,6 @@
 <div align="center">
 
-<!-- <img src="Md_JSON_Extraction/frontend/assets/bosch.png" alt="Bosch Logo" width="220"/> -->
+<img src="Md_JSON_Extraction/frontend/assets/bosch.png" alt="Bosch Logo" width="220"/>
 
 # PDF Document Extraction Pipeline
 
@@ -124,38 +124,126 @@ A single JSON file in `Pipeline/output/` that matches the null template shape ex
 
 ## Getting Started
 
+The project ships a `scripts/` folder that automates every step from a fresh checkout to a final JSON. All paths are driven by environment variables and CLI flags — no source-file edits needed, the repo can be renamed or moved without breaking anything.
+
 ### Prerequisites
 
-- Python 3.11+
-- Node.js >= 18 and pnpm >= 8 (for the OCR frontend)
-- Ollama with `qwen2.5:32b` model pulled locally
-- GPU recommended for OCR model inference
+| What | When you need it |
+|---|---|
+| **Python 3.8+** | Required. Stage 2 + the Streamlit eval frontend run on Python 3.8 just fine. |
+| **Python 3.11+** | Required only for re-running Stage 1 OCR locally (transformers / vLLM need ≥ 3.10). |
+| **Ollama** with `qwen2.5:32b` | Required for Stage 2. `curl -fsSL https://ollama.com/install.sh \| sh` |
+| **GPU + vLLM** | Optional. Only needed if you re-run Stage 1 OCR on this machine. |
+| **Node.js ≥ 18, pnpm ≥ 8** | Optional. Only for the React upload UI in `Md_JSON_Extraction/apps/`. The Python OCR runner (`run_glmocr_pdf_pages.py`) does not need them. |
 
----
+### One-time setup
 
-### Step 1 — Run OCR & Raw Extraction
+From the project root:
 
-Navigate to the `Md_JSON_Extraction/` folder. Upload your PDF through the web UI, let GLM-OCR process it, and download the Markdown and JSON output files.
+```bash
+chmod +x scripts/*.sh
+./scripts/setup_env.sh
+```
 
-> **📖 Detailed instructions inside `Md_JSON_Extraction/README.md`**
+`setup_env.sh` auto-detects your Python version and picks the right install profile:
 
----
+| Detected Python | Profile installed |
+|---|---|
+| **3.10+** | Full stack (Stage 1 + Stage 2 + Frontend) |
+| **3.8 / 3.9** | Stage 2 + Frontend only (slim, no torch/transformers) |
 
-### Step 2 — Create a Manual Schema (If Needed)
+Useful overrides:
 
-If you are processing a Purchase Order or Shipping Bill, schemas are already provided in `Pipeline/schemas/`. Skip to Step 3.
+```bash
+STAGE=2     ./scripts/setup_env.sh             # force slim install
+STAGE=full  ./scripts/setup_env.sh             # force full stack (needs Py 3.10+)
+PYTHON_BIN=python3.11 ./scripts/setup_env.sh   # use a specific interpreter
+CLEAN=1     ./scripts/setup_env.sh             # nuke .venv first and rebuild
+```
 
-For a new document type, study the document and create a null template, config, and adapter.
+Then start Ollama in a separate terminal:
 
-> **📖 Detailed instructions inside `Pipeline/documentation/manual_work_guide.md` and `Pipeline/documentation/adding_new_document_type.md`**
+```bash
+ollama serve                                   # leave running
+ollama pull qwen2.5:32b                        # one-time pull
+```
 
----
+### Run Stage 2 on the bundled samples
 
-### Step 3 — Run the Extraction Pipeline
+The repo ships pre-OCR'd merged outputs for both sample documents in `Pipeline/data/sample/`, so you can run the extraction step immediately after `setup_env.sh`:
 
-Navigate to the `Pipeline/` folder. Place your OCR outputs in the data directory and run the pipeline.
+```bash
+./scripts/run_purchase_order.sh
+./scripts/run_shipping_bill.sh
+./scripts/run_all_sample.sh                    # both, plus auto-setup
+```
 
-> **📖 Detailed instructions inside `Pipeline/README.md`**
+Final structured JSONs land in `Pipeline/output/`.
+
+### Run the full pipeline on your own PDF
+
+Stage 1 OCR needs a vLLM server serving GLM-OCR on port 8080 (see `Md_JSON_Extraction/README.md` for the `vllm serve …` command). Once that's up:
+
+```bash
+PDF_PATH=/abs/path/to/your.pdf \
+DOC_TYPE=purchase_order \
+./scripts/run_full_pipeline.sh
+```
+
+This single command does **OCR → merge → Stage 2** and prints the path to the final JSON.
+
+To skip Stage 1 because you OCR'd on a different machine and only want to run the structured-extraction step:
+
+```bash
+SKIP_OCR=1 SKIP_MERGE=1 \
+MD_PATH=/abs/path/merged_document.md \
+JSON_PATH=/abs/path/merged_pages.json \
+DOC_TYPE=purchase_order \
+./scripts/run_full_pipeline.sh
+```
+
+### Launch the Streamlit eval frontend
+
+After Stage 2 produces a result JSON, compare it against your ground truth in the browser:
+
+```bash
+./scripts/run_frontend.sh                                       # local
+PORT=8501 HOST=0.0.0.0 HEADLESS=1 ./scripts/run_frontend.sh     # SSH / headless
+```
+
+Open `http://localhost:8501`, upload **GT + your Stage-2 result + (optional) GPT JSON** in the sidebar, click *Evaluate Overlap Recall* / *Build GT↔Pred Alignment Excel*, and download the color-coded comparison.
+
+### Useful flags
+
+```bash
+EXTRA_ARGS="--dry-run"  ./scripts/run_purchase_order.sh    # validates inputs, no LLM calls
+EXTRA_ARGS="--inspect"  ./scripts/run_purchase_order.sh    # show schema + page structure and exit
+EXTRA_ARGS="--list"     ./scripts/run_purchase_order.sh    # list registered doc types
+EXTRA_ARGS="--no-cache" ./scripts/run_purchase_order.sh    # force fresh LLM calls (skip SHA-256 cache)
+OLLAMA_MODEL=qwen2.5:7b ./scripts/run_purchase_order.sh    # smaller / faster model for testing
+```
+
+### Available scripts at a glance
+
+| Script | What it does |
+|---|---|
+| `scripts/setup_env.sh` | Auto-profile environment install (Stage 2 only or full stack) |
+| `scripts/clean.sh` | Wipe `.venv`, caches, legacy garbage dirs |
+| `scripts/check_ollama.sh` | Verify Ollama daemon + auto-pull missing model |
+| `scripts/run_glmocr_pdf.sh` | Stage 1 — OCR a single PDF or a PDF folder |
+| `scripts/merge_glmocr_outputs.sh` | Merge per-page OCR results into `merged_output.md` + `merged.pages.json` |
+| `scripts/run_stage2.sh` | Generic Stage 2 runner — drives any registered doc type |
+| `scripts/run_purchase_order.sh` | Stage 2 wrapper for the Purchase Order sample |
+| `scripts/run_shipping_bill.sh` | Stage 2 wrapper for the Shipping Bill sample |
+| `scripts/run_all_sample.sh` | Setup + both samples in one go |
+| `scripts/run_full_pipeline.sh` | End-to-end orchestrator: PDF → final structured JSON |
+| `scripts/run_frontend.sh` | Launch the Streamlit GT-vs-Pred eval UI |
+
+> **📖 For deeper, script-by-script reference & every supported env var → see `README_RUN.md`**
+>
+> **📖 For Stage 1 deployment internals → see `Md_JSON_Extraction/README.md`**
+>
+> **📖 For Stage 2 internals & adding new document types → see `Pipeline/README.md`**
 
 ---
 
@@ -206,6 +294,7 @@ Navigate to the `Pipeline/` folder. Place your OCR outputs in the data directory
 | AI Extraction | Qwen2.5:32b via Ollama | Local LLM for free-text field extraction |
 | OCR Backend | FastAPI, Python 3.12, async workers | Async task queue with retry and recovery |
 | OCR Frontend | React 19, TypeScript, Vite, Tailwind CSS | Upload UI with real-time progress tracking |
+| Eval Frontend | Streamlit, openpyxl | GT-vs-Pred comparison, color-coded alignment Excel |
 | Pipeline Engine | Python, rule-based + AI hybrid | Generic extraction with plugin architecture |
 | Caching | SHA-256 disk-backed response cache | Avoids repeat AI calls on re-runs |
 
@@ -215,6 +304,7 @@ Navigate to the `Pipeline/` folder. Place your OCR outputs in the data directory
 
 | Document | Location | What It Covers |
 |---|---|---|
+| Run Guide | `README_RUN.md` | Script-by-script reference, every supported env var, common workflows |
 | OCR Setup & Usage | `Md_JSON_Extraction/README.md` | Model deployment, SDK usage, configuration |
 | OCR Backend | `Md_JSON_Extraction/apps/backend/README.md` | FastAPI service, task queue, API endpoints |
 | OCR Frontend | `Md_JSON_Extraction/apps/frontend/README.md` | React app setup, development, Docker |

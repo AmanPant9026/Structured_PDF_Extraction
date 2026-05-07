@@ -285,12 +285,32 @@ def write_reports(doc_dir: Path, report: Dict[str, Any], merged_path: Path, gt_p
 
 # --------------------------- CLI ---------------------------
 
-DEFAULT_GT = "/home/mtq3kor/aman/GLM/glm-ocr/Golden_folder/schemas/pm_pack/shipping-bill/gt.json"
+# Look for an obvious GT default next to the project, so a fresh checkout works
+# without anyone having to rewrite a hardcoded path. The user can still pass
+# --gt to override.
+def _resolve_default_gt() -> str | None:
+    here = Path(__file__).resolve().parent
+    candidates = [
+        here / "Golden_folder" / "schemas" / "pm_pack" / "shipping-bill" / "gt.json",
+        here / "Golden_folder" / "gt.json",
+        here.parent / "Golden_folder" / "gt.json",
+    ]
+    for c in candidates:
+        if c.exists():
+            return str(c)
+    return None
 
 def main() -> int:
+    default_gt = _resolve_default_gt()
     ap = argparse.ArgumentParser(description="Evaluate merged GLM-OCR output vs ground truth (simple overlap).")
     ap.add_argument("--doc-dir", required=True, help="PDF output folder (e.g., .../outputs/<pdf_name>)")
-    ap.add_argument("--gt", default=DEFAULT_GT, help=f"Path to ground truth JSON (default: {DEFAULT_GT})")
+    ap.add_argument(
+        "--gt",
+        default=default_gt,
+        required=(default_gt is None),
+        help="Path to ground truth JSON. "
+             + (f"Default auto-detected: {default_gt}" if default_gt else "(no default found, --gt is required)"),
+    )
     ap.add_argument("--merged", default=None, help="Path to merged JSON (optional; auto-detect if not given)")
     args = ap.parse_args()
 

@@ -1,15 +1,9 @@
 <div align="center">
 
-<!-- <img src="../Md_JSON_Extraction/frontend/assets/bosch.png" alt="Bosch Logo" width="200"/> -->
-# Full Pipeline(Stage 2)
-**Runs the full end to end pipeline to extracted structured JSON**
-</div>
+<img src="../Md_JSON_Extraction/frontend/assets/bosch.png" alt="Bosch Logo" width="200"/>
 
----
 > **This is Stage 2 of the pipeline.** Complete [Stage 1 (Md & JSON Extraction)](../Md_JSON_Extraction/README.md) first to get your OCR outputs.
-
----
-
+</div>
 
 
 
@@ -106,10 +100,9 @@ This document covers: the design principles, the layer architecture, what each i
 
 ### Prerequisites
 
-**1. Install Python dependencies**
-```bash
-pip install beautifulsoup4 lxml
-```
+**1. Python**
+- Python **3.8+** is enough for Stage 2. The slim profile installs only `beautifulsoup4` and `lxml`.
+- Python **3.11+** is required only if you also want Stage 1 OCR on this same machine (transformers / vLLM need ≥ 3.10).
 
 **2. Install Ollama** (the local LLM server)
 ```bash
@@ -129,18 +122,39 @@ ollama serve
 
 ---
 
-### Clone and Set Up
+### Set Up the Environment
+
+The recommended path is to use the bundled scripts — they auto-detect your Python version and install the right dependencies (slim or full).
+
+From the **project root** (one level above `Pipeline/`):
 
 ```bash
-git clone <your-repo-url>
-cd framework
-pip install beautifulsoup4 lxml
+chmod +x scripts/*.sh
+./scripts/setup_env.sh
+```
+
+| Detected Python | What gets installed |
+|---|---|
+| 3.10+ | Stage 1 + Stage 2 + Frontend |
+| 3.8 / 3.9 | Stage 2 + Frontend only (no torch/transformers) |
+
+If you'd rather install Stage 2 manually (no scripts), it's just:
+
+```bash
+cd Pipeline
+pip install -r requirements.txt        # beautifulsoup4 + lxml
 ```
 
 ---
 
 ### Run a Purchase Order Extraction
 
+**With the scripts (recommended):**
+```bash
+./scripts/run_purchase_order.sh
+```
+
+**Direct, equivalent:**
 ```bash
 python run.py \
   --doc-type purchase_order \
@@ -154,6 +168,12 @@ Output: `output/purchase_order_result.json`
 
 ### Run a Shipping Bill Extraction
 
+**With the scripts:**
+```bash
+./scripts/run_shipping_bill.sh
+```
+
+**Direct, equivalent:**
 ```bash
 python run.py \
   --doc-type shipping_bill \
@@ -162,6 +182,20 @@ python run.py \
 ```
 
 Output: `output/shipping_bill_result.json`
+
+---
+
+### Run on Your Own Merged Files
+
+Pass your paths via env vars; the script handles abs vs relative resolution and the Ollama check:
+
+```bash
+DOC_TYPE=purchase_order \
+MD_PATH=/abs/path/merged_purchase_order.md \
+JSON_PATH=/abs/path/merged_pages.json \
+OUTPUT_PATH=output/my_result.json \
+./scripts/run_stage2.sh
+```
 
 ---
 
@@ -200,6 +234,16 @@ python run.py \
   --log-dir  logs/
 ```
 
+The same flags can be forwarded through the wrapper scripts via `EXTRA_ARGS`:
+
+```bash
+EXTRA_ARGS="--dry-run"           ./scripts/run_purchase_order.sh
+EXTRA_ARGS="--inspect"           ./scripts/run_purchase_order.sh
+EXTRA_ARGS="--list"              ./scripts/run_purchase_order.sh
+EXTRA_ARGS="--no-cache"          ./scripts/run_purchase_order.sh
+OLLAMA_MODEL=qwen2.5:7b          ./scripts/run_purchase_order.sh
+```
+
 ---
 
 ### Check Your Results
@@ -223,12 +267,21 @@ for section, stats in report.items():
     print(section, stats)
 ```
 
+For a richer comparison against ground truth, launch the Streamlit eval frontend from the project root:
+
+```bash
+./scripts/run_frontend.sh
+```
+
+Upload **GT + your `output/*.json` + (optional) GPT JSON** in the sidebar and download the color-coded alignment Excel.
+
 ---
 
 ### Troubleshooting
 
 | Symptom | Cause | Fix |
 |---|---|---|
+| `Could not find a version that satisfies the requirement transformers>=4.57.0` | Python is < 3.10 and the script tried the full install | Re-run with `STAGE=2 ./scripts/setup_env.sh` (slim profile) |
 | `Cannot connect to Ollama` | Server not running | Run `ollama serve` in a separate terminal |
 | Field is `null` in output | Missing aliases or wrong section hint | Add aliases in `get_field_aliases()`, add hint in `get_section_hints()` |
 | Field includes the label | AI returned `"Supplier: ABC Ltd"` | Add cleanup in `postprocess_field()` |

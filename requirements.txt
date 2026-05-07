@@ -1,0 +1,72 @@
+# ============================================================================
+# Root requirements for the complete local PDF extraction project.
+#
+# Python required: 3.11 or 3.12 for the FULL stack.
+# Python 3.8 / 3.9 will only work for Stage 2 (Pipeline/) — the Stage-1 OCR
+# stack (transformers, vLLM, GLM-OCR) needs Python >= 3.10.
+#
+# scripts/setup_env.sh auto-detects your Python version:
+#   - Python 3.10+ -> installs everything below
+#   - Python 3.8/3.9 -> installs only Pipeline/requirements.txt (Stage 2 only)
+#
+# Force a profile: STAGE=2 ./scripts/setup_env.sh   (Stage 2 only, slim)
+#                  STAGE=full ./scripts/setup_env.sh (full stack)
+#
+# Notes:
+#   - Ollama itself is NOT a pip package. Install it separately:
+#       curl -fsSL https://ollama.com/install.sh | sh
+#       ollama pull qwen2.5:32b
+#   - For GLM-OCR self-hosted serving you also need vLLM and the latest
+#     transformers source build. Those are NOT in this file:
+#       uv pip install -U vllm --torch-backend=auto \
+#           --extra-index-url https://wheels.vllm.ai/nightly
+#       uv pip install git+https://github.com/huggingface/transformers.git
+#   - For GPU PyTorch, install the CUDA-specific torch wheel separately.
+# ============================================================================
+
+# -----------------------------
+# Stage 2: Structured extraction (works on Python 3.8+)
+# -----------------------------
+beautifulsoup4>=4.12.0
+lxml>=5.0.0
+requests>=2.28.0
+portalocker>=2.8.2
+python-dotenv>=0.21.0
+PyYAML>=6.0.0
+pydantic>=2.7.0
+
+# -----------------------------
+# Stage 1: GLM-OCR / PDF / image handling (Python >= 3.10)
+# -----------------------------
+Pillow>=9.0.0
+numpy>=1.24.0
+PyMuPDF>=1.24.0
+pypdfium2>=5.3.0
+opencv-python>=4.8.0
+wordfreq>=3.0.0
+sentencepiece>=0.1.99
+accelerate>=0.20.0
+
+# transformers>=4.57.0 needs Python 3.10+.
+# Md_JSON_Extraction/pyproject.toml currently pins transformers>=5.1.0; pip will
+# resolve to whichever is more restrictive. If you want to stay on transformers
+# 4.x, also edit Md_JSON_Extraction/pyproject.toml lines 40 and 56.
+transformers>=4.57.0
+
+# -----------------------------
+# Optional backend/frontend helpers in Md_JSON_Extraction
+# -----------------------------
+flask>=2.3.0
+fastapi>=0.110.0
+uvicorn>=0.27.0
+aiofiles>=23.0.0
+httpx>=0.27.0
+sqlalchemy>=2.0.0
+streamlit>=1.30.0
+pandas>=2.0.0
+openpyxl>=3.1.0
+
+# -----------------------------
+# Optional testing/dev
+# -----------------------------
+pytest>=7.0.0
